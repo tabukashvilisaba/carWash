@@ -1,574 +1,1380 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
-    <meta name="google-site-verification" content="pZJRu0IFjfFEuGyrLktowO541PY4CMAqg3UR1Zo7eWM" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarWash</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { margin: 0; padding-top: 80px; }
-        .header1 { display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 80px; position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background-color: #0a0f2c; box-sizing: border-box; border-bottom: 1px solid rgba(212,170,60,0.2); }
-        .div1 { display: flex; flex-direction: row; align-items: center; }
-        a { text-decoration: none; color: #a0aac0; }
-        .mainbtn { width: 120px; height: 45px; border: none; border-radius: 20px; background-color: #d4aa3c; color: #0a0f2c; font-weight: 700; cursor: pointer; transition: background-color 0.3s, scale 0.3s; font-family: 'Syne', sans-serif; }
-        .mainbtn:hover { background-color: #f0c84a; scale: 1.07; }
-        #main { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 0 80px; gap: 40px; }
-        .main-text { max-width: 500px; }
-        .main-text h1 { font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800; margin: 0 0 20px; line-height: 1.1; color: #54679a; }
-        .main-text h1 span { color: #d4aa3c; }
-        .main-text p { font-size: 18px; color: #8a94b0; line-height: 1.7; margin-bottom: 35px; }
-        .main-text button { padding: 14px 35px; border: none; border-radius: 25px; background-color: #d4aa3c; color: #0a0f2c; font-size: 16px; font-family: 'Syne', sans-serif; font-weight: 700; cursor: pointer; transition: background-color 0.3s; }
-        .main-text button:hover { background-color: #f0c84a; }
-        .main-image { width: 580px; height: 480px; border-radius: 30px; overflow: hidden; flex-shrink: 0; border: 2px solid rgba(212,170,60,0.3); transition: scale 0.5s; }
-        .main-image img { width: 100%; height: 100%; object-fit: cover; }
-        .main-image:hover { scale: 1.03; }
-        #services { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 80px; background-color: #080d22; }
-        .div2 { width: 300px; height: 600px; border: 1px solid rgba(212,170,60,0.2); border-radius: 30px; background: linear-gradient(160deg, #111a40, #0d1530); display: flex; flex-direction: column; align-items: center; transition: border-color 0.3s, transform 0.3s; }
-        .div2:hover { border-color: rgba(212,170,60,0.6); transform: translateY(-6px); }
-        .check { color: #d4aa3c; }
-        .item { color: #8a94b0; font-size: 13px; }
-        #how { min-height: 100vh; padding: 80px 80px; background-color: #0a0f2c; display: flex; flex-direction: column; align-items: center; }
-        #how h2 { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: #f0f4ff; text-align: center; margin: 0 0 12px; }
-        #how .subtitle { color: #8a94b0; font-size: 16px; text-align: center; margin-bottom: 70px; }
-        .how-columns { display: flex; gap: 80px; justify-content: center; align-items: flex-start; width: 100%; }
-        .how-col { display: flex; flex-direction: column; align-items: center; width: 320px; }
-        .how-type-badge { background: rgba(212,170,60,0.12); border: 1px solid rgba(212,170,60,0.3); border-radius: 50px; padding: 6px 20px; font-size: 13px; color: #d4aa3c; margin-bottom: 32px; font-family: 'Syne', sans-serif; }
-        .step-item { display: flex; flex-direction: column; align-items: center; width: 100%; }
-        .step-box { width: 100%; background: linear-gradient(160deg, #111a40, #0d1530); border: 1px solid rgba(212,170,60,0.25); border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; box-sizing: border-box; }
-        .step-num { width: 36px; height: 36px; border-radius: 50%; background-color: #d4aa3c; color: #0a0f2c; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .step-text { color: #f0f4ff; font-size: 14px; line-height: 1.5; }
-        .step-arrow { font-size: 22px; color: #d4aa3c; margin: 8px 0; opacity: 0.7; }
-        .how-divider { width: 1px; background: linear-gradient(to bottom, transparent, rgba(212,170,60,0.3), transparent); align-self: stretch; margin-top: 60px; }
-        #team { padding: 90px 80px; background-color: #ffffff; display: flex; flex-direction: column; align-items: center; font-family: 'Figtree', sans-serif; }
-        #team h2 { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: #0a0f2c; text-align: center; margin: 0 0 10px; }
-        #team .team-sub { color: #8a94b0; font-size: 16px; text-align: center; margin-bottom: 56px; }
-        .team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; width: 100%; max-width: 1100px; }
-        .team-card { background: #ffffff; border-radius: 22px; overflow: hidden; border: 1.5px solid #e4e8f5; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
-        .team-card:hover { transform: translateY(-7px); box-shadow: 0 14px 36px rgba(14,26,61,0.1); border-color: #d4aa3c; }
-        .team-photo { width: 100%; height: 200px; background: linear-gradient(135deg, #dde4f5, #eef0f7); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .team-photo-placeholder { width: 82px; height: 82px; border-radius: 50%; background: #0a0f2c; color: #fff; font-size: 30px; font-weight: 800; font-family: 'Syne', sans-serif; display: flex; align-items: center; justify-content: center; }
-        .team-badge { position: absolute; bottom: 10px; right: 10px; background: #d4aa3c; color: #0a0f2c; font-size: 10px; font-weight: 800; font-family: 'Syne', sans-serif; padding: 3px 10px; border-radius: 20px; }
-        .team-info { padding: 20px; }
-        .team-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; color: #0a0f2c; margin: 0 0 3px; }
-        .team-role { color: #d4aa3c; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
-        .team-desc { color: #8a94b0; font-size: 13px; line-height: 1.6; margin-bottom: 14px; }
-        .team-works { border-top: 1px solid #eef0f7; padding-top: 12px; }
-        .team-works-title { font-size: 10px; font-weight: 800; color: #8a94b0; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
-        .team-works-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-        .work-thumb { height: 48px; border-radius: 8px; background: #f7f8fc; border: 1px solid #e4e8f5; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: border-color 0.2s, background 0.2s; }
-        .work-thumb:hover { border-color: #d4aa3c; background: #fdf9ef; }
-        #contact { padding: 90px 80px; background-color: #ffffff; display: flex; flex-direction: column; align-items: center; font-family: 'Figtree', sans-serif; }
-        #contact h2 { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: #0a0f2c; text-align: center; margin: 0 0 10px; }
-        #contact .contact-sub { color: #8a94b0; font-size: 16px; text-align: center; margin-bottom: 56px; }
-        .contact-wrapper { width: 100%; max-width: 860px; display: flex; flex-direction: column; gap: 16px; }
-        .contact-phones-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .phone-card-new { background: #0a0f2c; border-radius: 18px; padding: 24px 28px; display: flex; align-items: center; gap: 16px; transition: transform 0.3s, box-shadow 0.3s; }
-        .phone-card-new:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,15,44,0.2); }
-        .phone-icon-new { width: 48px; height: 48px; border-radius: 14px; background: rgba(212,170,60,0.15); border: 1px solid rgba(212,170,60,0.3); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; overflow: hidden; }
-        .phone-label-new { font-size: 11px; font-weight: 700; color: #d4aa3c; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; font-family: 'Syne', sans-serif; }
-        .phone-val-new { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #ffffff; }
-        .phone-sub-new { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 3px; }
-        .social-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .social-card { border: 1.5px solid #e4e8f5; border-radius: 18px; padding: 22px 18px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; cursor: pointer; }
-        .social-card:hover { border-color: #d4aa3c; transform: translateY(-5px); box-shadow: 0 10px 28px rgba(212,170,60,0.12); }
-        .social-icon-wrap { width: 52px; height: 52px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 26px; overflow: hidden; }
-        .si-ig { background: rgba(225,48,108,0.08); } .si-fb { background: rgba(24,119,242,0.08); } .si-tt { background: rgba(0,0,0,0.05); } .si-loc { background: rgba(212,170,60,0.08); }
-        .social-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: #0a0f2c; text-align: center; }
-        .social-handle { font-size: 12px; color: #8a94b0; text-align: center; }
-        #booking { padding: 90px 80px; background-color: #080d22; display: flex; flex-direction: column; align-items: center; font-family: 'Figtree', sans-serif; }
-        #booking h2 { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: #f0f4ff; text-align: center; margin: 0 0 10px; }
-        #booking .booking-sub { color: #8a94b0; font-size: 16px; text-align: center; margin-bottom: 56px; }
-        .booking-form { width: 100%; max-width: 660px; background: linear-gradient(160deg, #111a40, #0d1530); border: 1px solid rgba(212,170,60,0.25); border-radius: 28px; padding: 50px 56px; box-sizing: border-box; }
-        .form-label { font-size: 11px; font-weight: 800; color: #d4aa3c; letter-spacing: 1.4px; text-transform: uppercase; display: block; margin-bottom: 8px; font-family: 'Syne', sans-serif; }
-        .form-input, .form-select, .form-textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(212,170,60,0.2); border-radius: 12px; padding: 13px 16px; color: #f0f4ff; font-family: 'Figtree', sans-serif; font-size: 15px; outline: none; box-sizing: border-box; transition: border-color 0.25s, background 0.25s; }
-        .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(212,170,60,0.7); background: rgba(255,255,255,0.08); }
-        .form-input::placeholder, .form-textarea::placeholder { color: #3a4460; }
-        .form-select { cursor: pointer; appearance: none; }
-        .form-select option { background: #0d1530; color: #f0f4ff; }
-        .form-textarea { resize: vertical; min-height: 90px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-        .form-group { margin-bottom: 18px; }
-        .service-selector { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-        .service-option { border: 1px solid rgba(212,170,60,0.2); border-radius: 14px; padding: 14px 10px; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.03); }
-        .service-option:hover { border-color: rgba(212,170,60,0.5); }
-        .service-option.active { border-color: #d4aa3c; background: rgba(212,170,60,0.1); box-shadow: 0 0 0 3px rgba(212,170,60,0.12); }
-        .so-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: #f0f4ff; margin-bottom: 3px; }
-        .so-price { font-size: 12px; color: #d4aa3c; font-weight: 600; }
-        .form-divider { border: none; border-top: 1px solid rgba(212,170,60,0.12); margin: 22px 0; }
-        .submit-btn { width: 100%; padding: 16px; border: none; border-radius: 14px; background: #d4aa3c; color: #0a0f2c; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; cursor: pointer; transition: background 0.25s, transform 0.2s; margin-top: 8px; }
-        .submit-btn:hover { background: #f0c84a; transform: translateY(-2px); }
-        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        .payment-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .pay-option { border: 1.5px solid rgba(212,170,60,0.2); border-radius: 14px; padding: 16px 14px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.03); }
-        .pay-option:hover { border-color: rgba(212,170,60,0.5); }
-        .pay-option.active { border-color: #d4aa3c; background: rgba(212,170,60,0.1); box-shadow: 0 0 0 3px rgba(212,170,60,0.12); }
-        .pay-icon { font-size: 24px; flex-shrink: 0; }
-        .pay-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; color: #f0f4ff; }
-        .pay-desc { font-size: 11px; color: #8a94b0; margin-top: 2px; }
-        .bank-section { margin-top: 16px; display: none; flex-direction: column; gap: 10px; }
-        .bank-section.visible { display: flex; }
-        .bank-card { border-radius: 14px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-        .bank-card.tbc { background: linear-gradient(135deg, #00aeef22, #00aeef08); border: 1px solid #00aeef44; }
-        .bank-card.bog { background: linear-gradient(135deg, #e8312722, #e8312708); border: 1px solid #e8312744; }
-        .bank-left { display: flex; align-items: center; gap: 14px; }
-        .bank-logo { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; font-family: 'Syne', sans-serif; flex-shrink: 0; overflow: hidden; }
-        .bank-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: #f0f4ff; margin-bottom: 4px; }
-        .bank-iban { font-family: monospace; font-size: 13px; color: #d4aa3c; background: rgba(212,170,60,0.08); padding: 4px 10px; border-radius: 8px; cursor: pointer; display: inline-block; }
-        .bank-iban:hover { background: rgba(212,170,60,0.18); }
-        .bank-copy-btn { background: rgba(212,170,60,0.15); border: 1px solid rgba(212,170,60,0.3); border-radius: 10px; padding: 8px 14px; color: #d4aa3c; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
-        .bank-copy-btn:hover { background: rgba(212,170,60,0.3); }
-        .bank-copy-btn.copied { background: rgba(34,197,94,0.2); border-color: rgba(34,197,94,0.4); color: #4ade80; }
-        .bank-note { background: rgba(212,170,60,0.06); border: 1px solid rgba(212,170,60,0.15); border-radius: 12px; padding: 14px 16px; font-size: 13px; color: #8a94b0; line-height: 1.6; }
-        .bank-note strong { color: #d4aa3c; }
-        .upload-area { border: 2px dashed rgba(212,170,60,0.3); border-radius: 14px; padding: 28px 20px; text-align: center; cursor: pointer; transition: all 0.25s; background: rgba(255,255,255,0.02); position: relative; }
-        .upload-area:hover { border-color: rgba(212,170,60,0.6); background: rgba(212,170,60,0.04); }
-        .upload-area.has-file { border-color: rgba(34,197,94,0.5); background: rgba(34,197,94,0.04); }
-        .upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-        .upload-icon { font-size: 32px; margin-bottom: 10px; }
-        .upload-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: #f0f4ff; margin-bottom: 4px; }
-        .upload-sub { font-size: 12px; color: #8a94b0; }
-        .upload-filename { font-size: 13px; color: #4ade80; font-weight: 600; margin-top: 8px; display: none; }
-        .toast { position: fixed; bottom: 28px; right: 28px; background: #d4aa3c; color: #0a0f2c; padding: 14px 26px; border-radius: 14px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; box-shadow: 0 8px 28px rgba(212,170,60,0.35); transform: translateY(80px); opacity: 0; transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast.error { background: #e83127; color: #fff; box-shadow: 0 8px 28px rgba(232,49,39,0.35); }
-        .copy-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: #0a0f2c; color: #d4aa3c; padding: 10px 22px; border-radius: 30px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; border: 1px solid rgba(212,170,60,0.4); box-shadow: 0 6px 20px rgba(0,0,0,0.3); opacity: 0; transition: all 0.3s; z-index: 999; }
-        .copy-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CarWash — პროფესიონალური მანქანის სამრეცხაო სერვისი თბილისში. ონლაინ ჯავშანი, Express, Premium და Detailing სერვისები. ვაკე, ყაზბეგის გამზ. 12.">
+  <meta name="keywords" content="car wash tbilisi, მანქანის რეცხვა თბილისი, სამრეცხაო თბილისი, auto detailing tbilisi, ავტომობილის წმენდა ვაკე">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="pZJRu0IFjfFEuGyrLktowO541PY4CMAqg3UR1Zo7eWM">
+  <title>CarWash — პროფესიონალური სამრეცხაო სერვისი თბილისში</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CarWash Tbilisi — Professional Car Wash">
+  <meta property="og:description" content="სწრაფი, ხარისხიანი, მოხერხებული. Express 20₾ · Premium 45₾ · Detailing 120₾. ჯავშანი ონლაინ.">
+  <meta property="og:url" content="https://carwash.ge">
+  <meta property="og:image" content="./carwash.jpg">
+  <meta property="og:locale" content="ka_GE">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://carwash.ge">
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoWash",
+    "name": "CarWash Tbilisi",
+    "description": "პროფესიონალური მანქანის სამრეცხაო სერვისი თბილისში",
+    "url": "https://carwash.ge",
+    "telephone": "+995555123456",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ყაზბეგის გამზ. 12",
+      "addressLocality": "თბილისი",
+      "addressRegion": "ვაკე",
+      "addressCountry": "GE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.7151,
+      "longitude": 44.7975
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    ],
+    "priceRange": "₾₾",
+    "image": "./carwash.jpg",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Car Wash Services",
+      "itemListElement": [
+        {"@type": "Offer","name": "Express","price": "20","priceCurrency": "GEL"},
+        {"@type": "Offer","name": "Premium","price": "45","priceCurrency": "GEL"},
+        {"@type": "Offer","name": "Detailing","price": "120","priceCurrency": "GEL"}
+      ]
+    }
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #d4aa3c;
+      --gold-light: #f0c84a;
+      --gold-dim: rgba(212,170,60,0.15);
+      --gold-border: rgba(212,170,60,0.25);
+      --navy: #0a0f2c;
+      --navy-mid: #0d1530;
+      --navy-deep: #080d22;
+      --text-primary: #f0f4ff;
+      --text-muted: #8a94b0;
+      --text-dim: #3a4460;
+      --card-bg: linear-gradient(160deg, #111a40, #0d1530);
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --header-h: 70px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Figtree', sans-serif; background: var(--navy); color: var(--text-primary); padding-top: var(--header-h); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 3px; }
+
+    /* ─── UTILITIES ─── */
+    .gold { color: var(--gold); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    /* ════════════════════════════════
+       HEADER
+    ════════════════════════════════ */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--header-h);
+      background: rgba(10,15,44,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 1000;
+      transition: background 0.3s;
+    }
+    .header-logo { display: flex; align-items: center; gap: 10px; }
+    .header-logo img { width: 48px; height: auto; }
+    .header-logo-text { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
+    .header-logo-text span:first-child { color: var(--gold); }
+    .header-logo-text span:last-child { color: var(--text-primary); }
+    .header-nav { display: flex; gap: 28px; align-items: center; }
+    .header-nav a { font-size: 14px; color: var(--text-muted); transition: color 0.2s; font-weight: 500; }
+    .header-nav a:hover { color: var(--gold); }
+    .btn-primary {
+      padding: 10px 26px; border-radius: 50px; background: var(--gold);
+      color: var(--navy); font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 14px; transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    /* Mobile menu button */
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .menu-toggle span { width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all 0.3s; }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none; position: fixed; top: var(--header-h); left: 0; right: 0;
+      background: rgba(10,15,44,0.97); backdrop-filter: blur(20px);
+      padding: 24px; z-index: 999; border-bottom: 1px solid var(--gold-border);
+      flex-direction: column; gap: 4px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { padding: 14px 0; font-size: 17px; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 500; }
+    .mobile-nav a:last-child { border: none; }
+    .mobile-nav .btn-primary { margin-top: 12px; text-align: center; padding: 14px; }
+
+    /* ════════════════════════════════
+       HERO
+    ════════════════════════════════ */
+    #main {
+      min-height: calc(100vh - var(--header-h));
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 60px;
+      padding: 80px 80px 80px;
+      position: relative; overflow: hidden;
+    }
+    #main::before {
+      content: ''; position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,170,60,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border);
+      border-radius: 50px; padding: 6px 16px; margin-bottom: 22px;
+      font-size: 12px; font-weight: 700; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Syne', sans-serif;
+    }
+    .hero-eyebrow::before { content: '●'; font-size: 8px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .hero-h1 { font-family: 'Syne', sans-serif; font-size: clamp(36px,4vw,58px); font-weight: 800; line-height: 1.08; color: var(--text-primary); margin-bottom: 20px; }
+    .hero-h1 em { font-style: normal; color: var(--gold); }
+    .hero-p { font-size: 17px; color: var(--text-muted); line-height: 1.75; margin-bottom: 36px; max-width: 440px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .hero-actions .btn-primary { padding: 14px 32px; font-size: 16px; }
+    .btn-ghost { padding: 14px 26px; border-radius: 50px; border: 1px solid var(--gold-border); color: var(--text-muted); font-size: 15px; font-weight: 600; transition: all 0.2s; background: transparent; font-family: 'Figtree', sans-serif; }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--gold-border); }
+    .hero-stat-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--gold); }
+    .hero-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+    .hero-image-wrap { position: relative; }
+    .hero-img {
+      width: 100%; aspect-ratio: 5/4; border-radius: var(--radius-lg);
+      overflow: hidden; border: 1px solid var(--gold-border);
+      transition: transform 0.5s ease;
+    }
+    .hero-img:hover { transform: scale(1.02); }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-badge {
+      position: absolute; bottom: -20px; left: -20px;
+      background: var(--navy-mid); border: 1px solid var(--gold-border);
+      border-radius: var(--radius-md); padding: 16px 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-badge-icon { font-size: 28px; }
+    .hero-badge-top { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: var(--text-primary); }
+    .hero-badge-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* open now indicator */
+    .open-pill {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.35);
+      border-radius: 50px; padding: 6px 14px;
+      font-size: 12px; font-weight: 700; color: #34d399; font-family: 'Syne', sans-serif;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .open-dot { width: 7px; height: 7px; border-radius: 50%; background: #34d399; animation: pulse 2s infinite; }
+
+    /* ════════════════════════════════
+       SERVICES
+    ════════════════════════════════ */
+    #services {
+      background: var(--navy-deep);
+      padding: 100px 80px;
+    }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-eyebrow {
+      display: inline-block; font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-h2 { font-family: 'Syne', sans-serif; font-size: clamp(28px,3vw,40px); font-weight: 800; color: var(--text-primary); margin-bottom: 12px; line-height: 1.15; }
+    .section-sub { font-size: 16px; color: var(--text-muted); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .service-card {
+      background: var(--card-bg); border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg); padding: 36px 32px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .service-card:hover { transform: translateY(-8px); border-color: rgba(212,170,60,0.5); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+    .service-card:hover::before { opacity: 1; }
+    .service-card.featured { border-color: rgba(212,170,60,0.6); }
+    .service-card.featured::before { opacity: 1; }
+    .featured-tag { position: absolute; top: 16px; right: 16px; background: var(--gold); color: var(--navy); font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 50px; }
+    .service-icon { font-size: 2.2rem; background: var(--gold-dim); border-radius: var(--radius-sm); padding: 14px; display: inline-flex; margin-bottom: 24px; }
+    .service-name { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+    .service-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+    .service-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; flex: 1; }
+    .service-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-muted); }
+    .service-features li::before { content: '✓'; color: var(--gold); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .service-footer { border-top: 1px solid var(--gold-border); padding-top: 24px; display: flex; align-items: flex-end; justify-content: space-between; }
+    .service-price { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; color: var(--gold); line-height: 1; }
+    .service-price-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .service-time { background: var(--gold-dim); border-radius: 50px; padding: 8px 14px; font-size: 12px; color: var(--text-muted); }
+
+    /* ════════════════════════════════
+       HOW IT WORKS
+    ════════════════════════════════ */
+    #how { background: var(--navy); padding: 100px 80px; }
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 900px; margin: 0 auto; }
+    .how-col-head { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+    .how-col-badge { background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 50px; padding: 8px 20px; font-size: 13px; color: var(--gold); font-family: 'Syne', sans-serif; font-weight: 700; }
+    .how-divider { width: 1px; background: linear-gradient(to bottom, transparent, var(--gold-border), transparent); }
+    .step { display: flex; gap: 16px; margin-bottom: 16px; }
+    .step-num { width: 38px; height: 38px; border-radius: 50%; background: var(--gold); color: var(--navy); font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-body { background: var(--card-bg); border: 1px solid var(--gold-border); border-radius: var(--radius-sm); padding: 16px 18px; flex: 1; }
+    .step-text { font-size: 14px; color: var(--text-primary); line-height: 1.55; }
+    .step-connector { width: 38px; display: flex; justify-content: center; }
+    .step-connector-line { width: 2px; height: 16px; background: var(--gold-border); }
+
+    /* ════════════════════════════════
+       REVIEWS
+    ════════════════════════════════ */
+    #reviews { background: var(--navy-deep); padding: 100px 80px; }
+    .reviews-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+    .reviews-rating-big { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+    .reviews-score { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: var(--gold); line-height: 1; }
+    .reviews-stars-row { color: var(--gold); font-size: 18px; letter-spacing: 2px; }
+    .reviews-count { font-size: 13px; color: var(--text-muted); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+    .review-card { background: var(--card-bg); border: 1px solid var(--gold-border); border-radius: var(--radius-md); padding: 28px; transition: transform 0.3s, border-color 0.3s; }
+    .review-card:hover { transform: translateY(-5px); border-color: rgba(212,170,60,0.5); }
+    .review-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .reviewer-info { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; color: var(--gold); flex-shrink: 0; }
+    .reviewer-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: var(--text-primary); }
+    .reviewer-service { font-size: 12px; color: var(--gold); margin-top: 2px; }
+    .review-stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; flex-shrink: 0; }
+    .review-text { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .review-date { font-size: 12px; color: var(--text-dim); margin-top: 14px; }
+    .google-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 50px; padding: 6px 14px; font-size: 12px; color: var(--text-muted); margin-top: 40px; margin-left: auto; margin-right: auto; display: flex; width: fit-content; }
+
+    /* ════════════════════════════════
+       GALLERY
+    ════════════════════════════════ */
+    #gallery { background: var(--navy); padding: 100px 80px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 220px 220px; gap: 14px; max-width: 1100px; margin: 0 auto; }
+    .gallery-item { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--gold-border); position: relative; cursor: pointer; }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; transition: background 0.3s; }
+    .gallery-placeholder.p1 { background: linear-gradient(135deg, #111a40, #0d1530); }
+    .gallery-placeholder.p2 { background: linear-gradient(135deg, #0d1530, #090e24); }
+    .gallery-placeholder.p3 { background: linear-gradient(135deg, #131e45, #0a1228); }
+    .gallery-item:hover .gallery-placeholder { filter: brightness(1.15); }
+    .gallery-placeholder-icon { font-size: 2.5rem; opacity: 0.5; }
+    .gallery-placeholder-text { font-size: 12px; color: var(--text-dim); font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 0.06em; }
+    .gallery-before-after { position: absolute; bottom: 10px; left: 10px; background: rgba(10,15,44,0.85); border: 1px solid var(--gold-border); border-radius: 50px; padding: 4px 12px; font-size: 11px; color: var(--gold); font-family: 'Syne', sans-serif; font-weight: 700; }
+
+    /* ════════════════════════════════
+       TEAM
+    ════════════════════════════════ */
+    #team { background: var(--navy-deep); padding: 100px 80px; }
+    .team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+    .team-card { background: var(--card-bg); border: 1px solid var(--gold-border); border-radius: var(--radius-md); overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
+    .team-card:hover { transform: translateY(-7px); border-color: rgba(212,170,60,0.5); }
+    .team-photo { height: 190px; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(135deg, #111a40 0%, #0a0f2c 100%); }
+    .team-initials { width: 80px; height: 80px; border-radius: 50%; background: var(--gold-dim); border: 2px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--gold); }
+    .team-badge-pill { position: absolute; bottom: 10px; right: 10px; background: var(--gold); color: var(--navy); font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 50px; }
+    .team-body { padding: 20px; }
+    .team-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px; }
+    .team-role { font-size: 12px; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
+    .team-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+    .team-exp { background: var(--gold-dim); border-radius: 50px; padding: 4px 12px; font-size: 11px; color: var(--gold); font-family: 'Syne', sans-serif; font-weight: 700; display: inline-block; }
+
+    /* ════════════════════════════════
+       FAQ
+    ════════════════════════════════ */
+    #faq { background: var(--navy); padding: 100px 80px; }
+    .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--card-bg); border: 1px solid var(--gold-border); border-radius: var(--radius-sm); overflow: hidden; }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; gap: 16px; }
+    .faq-q-text { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-primary); }
+    .faq-arrow { color: var(--gold); font-size: 20px; transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a { font-size: 14px; color: var(--text-muted); line-height: 1.75; padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+    /* ════════════════════════════════
+       CONTACT
+    ════════════════════════════════ */
+    #contact { background: var(--navy-deep); padding: 100px 80px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; margin: 0 auto; }
+    .contact-left { display: flex; flex-direction: column; gap: 16px; }
+    .contact-card { background: var(--navy); border: 1px solid var(--gold-border); border-radius: var(--radius-md); padding: 24px 28px; display: flex; align-items: center; gap: 16px; transition: transform 0.3s; }
+    .contact-card:hover { transform: translateY(-4px); }
+    .contact-card-icon { width: 50px; height: 50px; border-radius: var(--radius-sm); background: var(--gold-dim); border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .contact-card-label { font-size: 11px; font-weight: 800; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Syne', sans-serif; margin-bottom: 4px; }
+    .contact-card-val { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--text-primary); }
+    .contact-card-sub { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+    .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .social-btn { display: flex; align-items: center; gap: 10px; padding: 16px 18px; border: 1px solid var(--gold-border); border-radius: var(--radius-sm); transition: all 0.3s; background: var(--card-bg); }
+    .social-btn:hover { border-color: rgba(212,170,60,0.6); transform: translateY(-3px); }
+    .social-btn-icon { font-size: 22px; }
+    .social-btn-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--text-primary); }
+    .social-btn-handle { font-size: 12px; color: var(--text-muted); }
+    .contact-map { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--gold-border); height: 100%; min-height: 400px; background: var(--card-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .contact-map iframe { width: 100%; height: 100%; border: none; flex: 1; }
+    .map-placeholder-icon { font-size: 3rem; }
+    .map-placeholder-text { font-size: 14px; color: var(--text-muted); text-align: center; }
+    .map-address { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--gold); }
+    .hours-table { width: 100%; font-size: 13px; }
+    .hours-table td { padding: 8px 0; color: var(--text-muted); }
+    .hours-table td:last-child { text-align: right; color: var(--text-primary); font-weight: 600; }
+
+    /* ════════════════════════════════
+       BOOKING
+    ════════════════════════════════ */
+    #booking { background: var(--navy); padding: 100px 80px; }
+    .booking-form {
+      max-width: 680px; margin: 0 auto;
+      background: var(--card-bg); border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg); padding: 52px 56px;
+    }
+    .form-label { display: block; font-size: 11px; font-weight: 800; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; font-family: 'Syne', sans-serif; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--gold-border);
+      border-radius: var(--radius-sm); padding: 13px 16px; color: var(--text-primary);
+      font-family: 'Figtree', sans-serif; font-size: 15px; outline: none;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(212,170,60,0.7); background: rgba(255,255,255,0.07); }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); }
+    .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4aa3c' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+    .form-select option { background: #0d1530; color: var(--text-primary); }
+    .form-textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-divider { border: none; border-top: 1px solid var(--gold-border); margin: 24px 0; }
+    .service-selector { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .service-opt { border: 1px solid var(--gold-border); border-radius: var(--radius-sm); padding: 14px 10px; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.02); }
+    .service-opt:hover { border-color: rgba(212,170,60,0.5); }
+    .service-opt.active { border-color: var(--gold); background: var(--gold-dim); box-shadow: 0 0 0 3px rgba(212,170,60,0.1); }
+    .so-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 3px; }
+    .so-price { font-size: 12px; color: var(--gold); }
+    .payment-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .pay-opt { border: 1px solid var(--gold-border); border-radius: var(--radius-sm); padding: 16px 14px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.02); }
+    .pay-opt:hover { border-color: rgba(212,170,60,0.5); }
+    .pay-opt.active { border-color: var(--gold); background: var(--gold-dim); }
+    .pay-icon-wrap { font-size: 24px; flex-shrink: 0; }
+    .pay-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; color: var(--text-primary); }
+    .pay-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .bank-section { margin-top: 16px; display: none; flex-direction: column; gap: 10px; }
+    .bank-section.visible { display: flex; }
+    .bank-note { background: rgba(212,170,60,0.06); border: 1px solid rgba(212,170,60,0.15); border-radius: var(--radius-sm); padding: 14px 16px; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .bank-note strong { color: var(--gold); }
+    .bank-card { border-radius: var(--radius-sm); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .bank-card.tbc { background: rgba(0,174,239,0.07); border: 1px solid rgba(0,174,239,0.25); }
+    .bank-card.bog { background: rgba(232,49,39,0.07); border: 1px solid rgba(232,49,39,0.25); }
+    .bank-left { display: flex; align-items: center; gap: 12px; }
+    .bank-logo { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; }
+    .bank-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .bank-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px; }
+    .bank-iban { font-family: monospace; font-size: 13px; color: var(--gold); background: rgba(212,170,60,0.08); padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+    .bank-copy-btn { background: rgba(212,170,60,0.12); border: 1px solid rgba(212,170,60,0.25); border-radius: 8px; padding: 8px 14px; color: var(--gold); font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .bank-copy-btn:hover { background: rgba(212,170,60,0.25); }
+    .bank-copy-btn.copied { background: rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.35); color: #4ade80; }
+    .upload-area { border: 2px dashed var(--gold-border); border-radius: var(--radius-sm); padding: 28px 20px; text-align: center; cursor: pointer; transition: all 0.25s; background: rgba(255,255,255,0.02); position: relative; }
+    .upload-area:hover { border-color: rgba(212,170,60,0.6); background: rgba(212,170,60,0.04); }
+    .upload-area.has-file { border-color: rgba(34,197,94,0.5); }
+    .upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .upload-icon { font-size: 30px; margin-bottom: 8px; }
+    .upload-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .upload-sub { font-size: 12px; color: var(--text-muted); }
+    .upload-filename { font-size: 13px; color: #4ade80; font-weight: 600; margin-top: 8px; display: none; }
+    .submit-btn { width: 100%; padding: 17px; border-radius: var(--radius-sm); background: var(--gold); color: var(--navy); font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; cursor: pointer; transition: background 0.25s, transform 0.2s; margin-top: 8px; border: none; }
+    .submit-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* ════════════════════════════════
+       FOOTER
+    ════════════════════════════════ */
+    footer { background: var(--navy-deep); border-top: 1px solid var(--gold-border); padding: 60px 80px 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-top: 14px; max-width: 280px; }
+    .footer-col h4 { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .footer-col a, .footer-col span { display: block; font-size: 14px; color: var(--text-muted); margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid var(--gold-border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-dim); }
+    .footer-made { font-size: 13px; color: var(--text-dim); }
+    .footer-made span { color: var(--gold); }
+
+    /* ════════════════════════════════
+       TOASTS
+    ════════════════════════════════ */
+    .toast { position: fixed; bottom: 28px; right: 28px; background: var(--gold); color: var(--navy); padding: 14px 24px; border-radius: var(--radius-sm); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; box-shadow: 0 8px 28px rgba(212,170,60,0.35); transform: translateY(80px); opacity: 0; transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); z-index: 9999; max-width: 340px; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.error { background: #e83127; color: #fff; }
+    .copy-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--navy); color: var(--gold); padding: 10px 22px; border-radius: 50px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; border: 1px solid rgba(212,170,60,0.4); box-shadow: 0 6px 20px rgba(0,0,0,0.4); opacity: 0; transition: all 0.3s; z-index: 9999; }
+    .copy-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ════════════════════════════════
+       MOBILE — BOTTOM NAV
+    ════════════════════════════════ */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(10,15,44,0.97); backdrop-filter: blur(16px);
+      border-top: 1px solid var(--gold-border);
+      padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+      z-index: 1000;
+      justify-content: space-around;
+    }
+    .mob-nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 16px; text-decoration: none; transition: all 0.2s; }
+    .mob-nav-icon { font-size: 22px; }
+    .mob-nav-label { font-size: 10px; font-weight: 700; color: var(--text-dim); font-family: 'Syne', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .mob-nav-item.active .mob-nav-label, .mob-nav-item:hover .mob-nav-label { color: var(--gold); }
+    .mob-nav-book { background: var(--gold); border-radius: 50px; padding: 8px 18px !important; margin-top: -8px; }
+    .mob-nav-book .mob-nav-label { color: var(--navy) !important; }
+
+    /* ════════════════════════════════
+       RESPONSIVE — TABLET
+    ════════════════════════════════ */
+    @media (max-width: 1024px) {
+      #main { grid-template-columns: 1fr; padding: 60px 40px; gap: 40px; text-align: center; }
+      #main .hero-p { margin: 0 auto 36px; }
+      #main .hero-stats { justify-content: center; }
+      #main .hero-actions { justify-content: center; }
+      .hero-image-wrap { max-width: 560px; margin: 0 auto; }
+      .services-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      #services, #how, #reviews, #gallery, #team, #faq, #contact, #booking, footer { padding: 80px 40px; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .how-grid { grid-template-columns: 1fr; gap: 40px; }
+      .how-divider { display: none; }
+    }
+
+    /* ════════════════════════════════
+       RESPONSIVE — MOBILE
+    ════════════════════════════════ */
+    @media (max-width: 680px) {
+      :root { --header-h: 64px; }
+      body { padding-bottom: 80px; }
+      .header { padding: 0 20px; }
+      .header-nav, .header .btn-primary { display: none; }
+      .menu-toggle { display: flex; }
+      #main { padding: 40px 20px; }
+      #main .hero-badge { display: none; }
+      #services, #how, #reviews, #gallery, #team, #faq, #contact, #booking, footer { padding: 60px 20px; }
+      .booking-form { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .service-selector { grid-template-columns: 1fr 1fr; }
+      .payment-selector { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .social-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item.wide, .gallery-item.tall { grid-column: span 1; grid-row: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .reviews-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .reviews-rating-big { align-items: flex-start; }
+      .mobile-bottom-nav { display: flex; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="header1">
-    <div class="div1" style="gap: 10px;">
-        <img src="./carwash_logo.png" alt="" style="width: 60px; height: auto;">
-        <a href="#main">
-            <h2 style="font-family: 'Syne', sans-serif; margin: 0;">
-                <span style="color: #d4aa3c;">Car</span><span style="color: #f0f4ff;">Wash</span>
-            </h2>
-        </a>
-    </div>
-    <div class="div1" style="gap: 25px;">
-        <a href="#services" onmouseover="this.style.color='#d4aa3c'" onmouseout="this.style.color='#a0aac0'">სერვისები</a>
-        <a href="#how"      onmouseover="this.style.color='#d4aa3c'" onmouseout="this.style.color='#a0aac0'">როგორ მუშაობს</a>
-        <a href="#team"     onmouseover="this.style.color='#d4aa3c'" onmouseout="this.style.color='#a0aac0'">თანამშრომლები</a>
-        <a href="#contact"  onmouseover="this.style.color='#d4aa3c'" onmouseout="this.style.color='#a0aac0'">საკონტაქტო</a>
-    </div>
-    <div class="div1">
-        <a href="#booking"><button class="mainbtn">დაჯავშნა</button></a>
-    </div>
+<!-- ═══════════════════════════════════
+     HEADER
+═══════════════════════════════════ -->
+<header class="header" role="banner">
+  <div class="header-logo">
+    <img src="./carwash_logo.png" alt="CarWash logo" width="48" height="48">
+    <div class="header-logo-text"><span>Car</span><span>Wash</span></div>
+  </div>
+  <nav class="header-nav" role="navigation" aria-label="მთავარი ნავიგაცია">
+    <a href="#services">სერვისები</a>
+    <a href="#reviews">შეფასებები</a>
+    <a href="#how">როგორ მუშაობს</a>
+    <a href="#team">თანამშრომლები</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">საკონტაქტო</a>
+  </nav>
+  <a href="#booking" class="btn-primary" aria-label="ვიზიტის ჯავშანი">დაჯავშნა</a>
+  <button class="menu-toggle" id="menu-toggle" aria-label="მენიუ" aria-expanded="false" aria-controls="mobile-nav">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
-<section id="main">
-    <div class="main-text">
-        <h1>შენი მანქანა <span>იმსახურებს</span> საუკეთესოს</h1>
-        <p>პროფესიონალური სამრეცხაო სერვისი თბილისში. სწრაფი, ხარისხიანი და მოხერხებული — დაჯავშნეთ ადგილი ონლაინ და მოდით თქვენს დროს.</p>
-        <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">ახლავე დაჯავშნა →</button>
+<!-- Mobile nav drawer -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="მობილური ნავიგაცია">
+  <a href="#services"  onclick="closeMobileNav()">სერვისები</a>
+  <a href="#reviews"   onclick="closeMobileNav()">შეფასებები</a>
+  <a href="#how"       onclick="closeMobileNav()">როგორ მუშაობს</a>
+  <a href="#team"      onclick="closeMobileNav()">თანამშრომლები</a>
+  <a href="#faq"       onclick="closeMobileNav()">FAQ</a>
+  <a href="#contact"   onclick="closeMobileNav()">საკონტაქტო</a>
+  <a href="#booking" class="btn-primary" onclick="closeMobileNav()">ვიზიტის დაჯავშნა →</a>
+</nav>
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<main>
+<section id="main" aria-labelledby="hero-heading">
+  <div class="hero-text">
+    <div class="hero-eyebrow">თბილისი · ვაკე</div>
+    <h1 class="hero-h1" id="hero-heading">შენი მანქანა<br><em>იმსახურებს</em><br>საუკეთესოს</h1>
+    <p class="hero-p">პროფესიონალური სამრეცხაო სერვისი თბილისში. სწრაფი, ხარისხიანი და მოხერხებული — დაჯავშნეთ ადგილი ონლაინ.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">ახლავე დაჯავშნა →</a>
+      <a href="#services" class="btn-ghost">სერვისები ნახე</a>
     </div>
-    <div class="main-image">
-        <img src="./carwash.jpg" alt="car wash">
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">1,200+</div>
+        <div class="hero-stat-label">კმაყოფილი კლიენტი</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4.9★</div>
+        <div class="hero-stat-label">საშუალო შეფასება</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">3+</div>
+        <div class="hero-stat-label">წელი ბაზარზე</div>
+      </div>
     </div>
+  </div>
+  <div class="hero-image-wrap">
+    <div class="hero-img">
+      <img src="./carwash.jpg" alt="CarWash Tbilisi — პროფესიონალური მანქანის სამრეცხაო" width="580" height="460" loading="eager">
+      <div class="open-pill" id="open-status" aria-live="polite">
+        <div class="open-dot"></div>
+        <span id="open-text">ახლა ღიაა</span>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-icon">🏆</div>
+      <div>
+        <div class="hero-badge-top">Premium Quality</div>
+        <div class="hero-badge-sub">სერტიფიცირებული სერვისი</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="services">
-    <div style="display: flex; justify-content: center; gap: 40px;">
-        <div class="div2">
-            <div style="font-size: 2rem; background: rgba(212,170,60,0.12); border-radius: 12px; padding: 12px; margin-top: 30px;">💧</div>
-            <h3 style="color: #f0f4ff; font-family: 'Syne', sans-serif; font-size: 22px; margin: 20px 0 8px; align-self: flex-start; padding: 0 25px;">Express</h3>
-            <p style="color: #8a94b0; font-size: 14px; padding: 0 25px; margin: 0 0 20px;">სწრაფი გარეთა რეცხვა ყოველდღიური გამოყენებისთვის.</p>
-            <div style="padding: 0 25px; display: flex; flex-direction: column; gap: 8px; align-self: flex-start;">
-                <span class="item"><span class="check">✓</span> გარეთა სრული რეცხვა</span>
-                <span class="item"><span class="check">✓</span> მინების წმენდა</span>
-                <span class="item"><span class="check">✓</span> დისკების წმენდა</span>
-                <span class="item"><span class="check">✓</span> სარეინჯო სუნამო</span>
-            </div>
-            <hr style="width: 80%; border: none; border-top: 1px solid rgba(212,170,60,0.15); margin: auto 0 20px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 25px; width: 100%; box-sizing: border-box;">
-                <div><span style="color: #d4aa3c; font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;">20 ₾</span><div style="color: #8a94b0; font-size: 12px; margin-bottom: 5px;">/ ვიზიტი</div></div>
-                <div style="background: rgba(212,170,60,0.1); border-radius: 50px; padding: 8px 14px; color: #8a94b0; font-size: 12px;">⏱ 20 წთ</div>
-            </div>
+<!-- ═══════════════════════════════════
+     SERVICES
+═══════════════════════════════════ -->
+<section id="services" aria-labelledby="services-heading">
+  <div class="section-header">
+    <div class="section-eyebrow">სერვისები</div>
+    <h2 class="section-h2" id="services-heading">აირჩიეთ თქვენი სერვისი</h2>
+    <p class="section-sub">სამი პაკეტი — ყველა მოთხოვნისთვის. ადვილი ჯავშანი, სწრაფი სერვისი.</p>
+  </div>
+  <div class="services-grid">
+    <article class="service-card" aria-label="Express სერვისი">
+      <div class="service-icon" aria-hidden="true">💧</div>
+      <h3 class="service-name">Express</h3>
+      <p class="service-desc">სწრაფი გარეთა რეცხვა ყოველდღიური გამოყენებისთვის.</p>
+      <ul class="service-features">
+        <li>გარეთა სრული რეცხვა</li>
+        <li>მინების წმენდა</li>
+        <li>დისკების წმენდა</li>
+        <li>სარეინჯო სუნამო</li>
+      </ul>
+      <div class="service-footer">
+        <div>
+          <div class="service-price">20 ₾</div>
+          <div class="service-price-sub">/ ვიზიტი</div>
         </div>
-        <div class="div2" style="border-color: rgba(212,170,60,0.5);">
-            <div style="font-size: 2rem; background: rgba(212,170,60,0.12); border-radius: 12px; padding: 12px; margin-top: 30px;">✨</div>
-            <h3 style="color: #f0f4ff; font-family: 'Syne', sans-serif; font-size: 22px; margin: 20px 0 8px; align-self: flex-start; padding: 0 25px;">Premium</h3>
-            <p style="color: #8a94b0; font-size: 14px; padding: 0 25px; margin: 0 0 20px;">სრული გარე და შიდა მომსახურება კომფორტული გარბენისთვის.</p>
-            <div style="padding: 0 25px; display: flex; flex-direction: column; gap: 8px; align-self: flex-start;">
-                <span class="item"><span class="check">✓</span> Express-ის ყველაფერი</span>
-                <span class="item"><span class="check">✓</span> შიდა მტვრის სრული მოხვაცება</span>
-                <span class="item"><span class="check">✓</span> სალონის სრული გამოფხეჭა</span>
-                <span class="item"><span class="check">✓</span> ხელის გამომშრალი პოლიშინგი</span>
-                <span class="item"><span class="check">✓</span> ტვირთის სექციის წმენდა</span>
-            </div>
-            <hr style="width: 80%; border: none; border-top: 1px solid rgba(212,170,60,0.15); margin: auto 0 20px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 25px; width: 100%; box-sizing: border-box;">
-                <div><span style="color: #d4aa3c; font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;">45 ₾</span><div style="color: #8a94b0; font-size: 12px; margin-bottom: 5px;">/ ვიზიტი</div></div>
-                <div style="background: rgba(212,170,60,0.1); border-radius: 50px; padding: 8px 14px; color: #8a94b0; font-size: 12px;">⏱ 45 წთ</div>
-            </div>
+        <div class="service-time">⏱ 20 წთ</div>
+      </div>
+    </article>
+
+    <article class="service-card featured" aria-label="Premium სერვისი — ყველაზე პოპულარული">
+      <div class="featured-tag">★ პოპულარული</div>
+      <div class="service-icon" aria-hidden="true">✨</div>
+      <h3 class="service-name">Premium</h3>
+      <p class="service-desc">სრული გარე და შიდა მომსახურება კომფორტული გარბენისთვის.</p>
+      <ul class="service-features">
+        <li>Express-ის ყველაფერი</li>
+        <li>შიდა მტვრის სრული მოხვაცება</li>
+        <li>სალონის სრული გამოფხეჭა</li>
+        <li>ხელის გამომშრალი პოლიშინგი</li>
+        <li>ტვირთის სექციის წმენდა</li>
+      </ul>
+      <div class="service-footer">
+        <div>
+          <div class="service-price">45 ₾</div>
+          <div class="service-price-sub">/ ვიზიტი</div>
         </div>
-        <div class="div2">
-            <div style="font-size: 2rem; background: rgba(212,170,60,0.12); border-radius: 12px; padding: 12px; margin-top: 30px;">🏆</div>
-            <h3 style="color: #f0f4ff; font-family: 'Syne', sans-serif; font-size: 22px; margin: 20px 0 8px; align-self: flex-start; padding: 0 25px;">Detailing</h3>
-            <p style="color: #8a94b0; font-size: 14px; padding: 0 25px; margin: 0 0 20px;">პროფესიონალური ავტოდეტეილინგი გამართული ლუქის დაბრუნებით.</p>
-            <div style="padding: 0 25px; display: flex; flex-direction: column; gap: 8px; align-self: flex-start;">
-                <span class="item"><span class="check">✓</span> Premium-ის ყველაფერი</span>
-                <span class="item"><span class="check">✓</span> ლაქის პოლიშინგი</span>
-                <span class="item"><span class="check">✓</span> კერამიკული დაფარვა</span>
-                <span class="item"><span class="check">✓</span> ტყავის კონდიციონირება</span>
-                <span class="item"><span class="check">✓</span> ძარის ოზონური დამუშავება</span>
-                <span class="item"><span class="check">✓</span> დეტალური ფოტო-ანგარიში</span>
-            </div>
-            <hr style="width: 80%; border: none; border-top: 1px solid rgba(212,170,60,0.15); margin: auto 0 20px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 25px; width: 100%; box-sizing: border-box;">
-                <div><span style="color: #d4aa3c; font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;">120 ₾</span><div style="color: #8a94b0; font-size: 12px; margin-bottom: 5px;">/ ვიზიტი</div></div>
-                <div style="background: rgba(212,170,60,0.1); border-radius: 50px; padding: 8px 14px; color: #8a94b0; font-size: 12px;">⏱ 3 სთ</div>
-            </div>
+        <div class="service-time">⏱ 45 წთ</div>
+      </div>
+    </article>
+
+    <article class="service-card" aria-label="Detailing სერვისი">
+      <div class="service-icon" aria-hidden="true">🏆</div>
+      <h3 class="service-name">Detailing</h3>
+      <p class="service-desc">პროფესიონალური ავტოდეტეილინგი გამართული ლუქის დაბრუნებით.</p>
+      <ul class="service-features">
+        <li>Premium-ის ყველაფერი</li>
+        <li>ლაქის პოლიშინგი</li>
+        <li>კერამიკული დაფარვა</li>
+        <li>ტყავის კონდიციონირება</li>
+        <li>ძარის ოზონური დამუშავება</li>
+        <li>დეტალური ფოტო-ანგარიში</li>
+      </ul>
+      <div class="service-footer">
+        <div>
+          <div class="service-price">120 ₾</div>
+          <div class="service-price-sub">/ ვიზიტი</div>
         </div>
-    </div>
+        <div class="service-time">⏱ 3 სთ</div>
+      </div>
+    </article>
+  </div>
 </section>
 
-<section id="how">
-    <h2>როგორ მუშაობს ჩვენი სერვისი</h2>
-    <p class="subtitle">აირჩიეთ თქვენთვის მოსახერხებელი მომსახურების ტიპი</p>
-    <div class="how-columns">
-        <div class="how-col">
-            <div class="how-type-badge">🏢 სამრეცხაოში მობრძანება</div>
-            <div class="step-item">
-                <div class="step-box"><div class="step-num">1</div><div class="step-text">აირჩიეთ სასურველი სერვისი და დაჯავშნეთ მოსახერხებელი დრო</div></div>
-                <div class="step-arrow">↓</div>
-                <div class="step-box"><div class="step-num">2</div><div class="step-text">მობრძანდით დაჯავშნილ დროს — ჩვენი გუნდი მზად გელოდებათ</div></div>
-                <div class="step-arrow">↓</div>
-                <div class="step-box"><div class="step-num">3</div><div class="step-text">მიიღეთ გარეცხილი, სუფთა მანქანა და გაემგზავრეთ კომფორტულად</div></div>
-            </div>
-        </div>
-        <div class="how-divider"></div>
-        <div class="how-col">
-            <div class="how-type-badge">🚗 მძღოლის გამოძახება</div>
-            <div class="step-item">
-                <div class="step-box"><div class="step-num">1</div><div class="step-text">დაჯავშნეთ სერვისი და მიუთითეთ თქვენი ადგილმდებარეობა</div></div>
-                <div class="step-arrow">↓</div>
-                <div class="step-box"><div class="step-num">2</div><div class="step-text">ჩვენი მძღოლი მოგაკითხავთ და მანქანას სამრეცხაოში გადაიყვანს</div></div>
-                <div class="step-arrow">↓</div>
-                <div class="step-box"><div class="step-num">3</div><div class="step-text">სერვისის დასრულების შემდეგ მძღოლი სუფთა მანქანას დაგიბრუნებთ</div></div>
-            </div>
-        </div>
+<!-- ═══════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════ -->
+<section id="how" aria-labelledby="how-heading">
+  <div class="section-header">
+    <div class="section-eyebrow">პროცესი</div>
+    <h2 class="section-h2" id="how-heading">როგორ მუშაობს</h2>
+    <p class="section-sub">აირჩიეთ მომსახურების ტიპი — სამრეცხაოში მობრძანება ან მძღოლის გამოძახება.</p>
+  </div>
+  <div class="how-grid">
+    <div>
+      <div class="how-col-head">
+        <div class="how-col-badge">🏢 სამრეცხაოში მობრძანება</div>
+      </div>
+      <div class="step">
+        <div><div class="step-num">1</div></div>
+        <div class="step-body"><p class="step-text">აირჩიეთ სასურველი სერვისი და დაჯავშნეთ მოსახერხებელი დრო ონლაინ ფორმით</p></div>
+      </div>
+      <div class="step" style="margin-left:0; padding-left:0;">
+        <div class="step-connector"><div class="step-connector-line"></div></div>
+      </div>
+      <div class="step">
+        <div><div class="step-num">2</div></div>
+        <div class="step-body"><p class="step-text">მობრძანდით დაჯავშნილ დროს — ჩვენი გუნდი მზად გელოდებათ</p></div>
+      </div>
+      <div class="step" style="margin-left:0; padding-left:0;">
+        <div class="step-connector"><div class="step-connector-line"></div></div>
+      </div>
+      <div class="step">
+        <div><div class="step-num">3</div></div>
+        <div class="step-body"><p class="step-text">მიიღეთ გარეცხილი, სუფთა მანქანა და გაემგზავრეთ კომფორტულად</p></div>
+      </div>
     </div>
+    <div class="how-divider"></div>
+    <div>
+      <div class="how-col-head">
+        <div class="how-col-badge">🚗 მძღოლის გამოძახება</div>
+      </div>
+      <div class="step">
+        <div><div class="step-num">1</div></div>
+        <div class="step-body"><p class="step-text">დაჯავშნეთ სერვისი და მიუთითეთ თქვენი ადგილმდებარეობა ფორმაში</p></div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-connector-line"></div></div>
+      </div>
+      <div class="step">
+        <div><div class="step-num">2</div></div>
+        <div class="step-body"><p class="step-text">ჩვენი მძღოლი მოგაკითხავთ და მანქანას სამრეცხაოში გადაიყვანს</p></div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-connector-line"></div></div>
+      </div>
+      <div class="step">
+        <div><div class="step-num">3</div></div>
+        <div class="step-body"><p class="step-text">სერვისის დასრულების შემდეგ მძღოლი სუფთა მანქანას დაგიბრუნებთ</p></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="team">
-    <h2>ჩვენი თანამშრომლები</h2>
-    <p class="team-sub">პროფესიონალები, რომლებიც ზრუნავენ შენს მანქანაზე</p>
-    <div class="team-grid">
-        <div class="team-card">
-            <div class="team-photo"><div class="team-photo-placeholder">გ</div><div class="team-badge">⭐ მთავარი</div></div>
-            <div class="team-info">
-                <div class="team-name">გიორგი მამულაშვილი</div>
-                <div class="team-role">🔧 მთავარი დეტეილერი</div>
-                <div class="team-desc">8 წლის გამოცდილება. სპეციალიზაცია კერამიკულ დაფარვასა და პოლიშინგში.</div>
-                <div class="team-works"><div class="team-works-title">ნამუშევრები</div><div class="team-works-grid"><div class="work-thumb">🚗</div><div class="work-thumb">✨</div><div class="work-thumb">🏎️</div><div class="work-thumb">💎</div></div></div>
-            </div>
-        </div>
-        <div class="team-card">
-            <div class="team-photo"><div class="team-photo-placeholder">ნ</div><div class="team-badge">💎 Premium</div></div>
-            <div class="team-info">
-                <div class="team-name">ნინო კვარაცხელია</div>
-                <div class="team-role">✨ სალონის სპეციალისტი</div>
-                <div class="team-desc">5 წლის გამოცდილება. ტყავის კონდიციონირება და სალონის სრული აღდგენა.</div>
-                <div class="team-works"><div class="team-works-title">ნამუშევრები</div><div class="team-works-grid"><div class="work-thumb">🪑</div><div class="work-thumb">🧹</div><div class="work-thumb">🌟</div><div class="work-thumb">🚙</div></div></div>
-            </div>
-        </div>
-        <div class="team-card">
-            <div class="team-photo"><div class="team-photo-placeholder">დ</div><div class="team-badge">🚀 Express</div></div>
-            <div class="team-info">
-                <div class="team-name">დავით ბერიძე</div>
-                <div class="team-role">💧 Express სპეციალისტი</div>
-                <div class="team-desc">სწრაფი და ხარისხიანი გარე რეცხვის ოსტატი. 200+ კმაყოფილი კლიენტი ყოველ თვე.</div>
-                <div class="team-works"><div class="team-works-title">ნამუშევრები</div><div class="team-works-grid"><div class="work-thumb">💧</div><div class="work-thumb">🚿</div><div class="work-thumb">🧼</div><div class="work-thumb">🏁</div></div></div>
-            </div>
-        </div>
-        <div class="team-card">
-            <div class="team-photo"><div class="team-photo-placeholder">ლ</div><div class="team-badge">🏆 Detailing</div></div>
-            <div class="team-info">
-                <div class="team-name">ლაშა გელაშვილი</div>
-                <div class="team-role">🏆 ლაქის სპეციალისტი</div>
-                <div class="team-desc">ლაქის აღდგენის ექსპერტი. 6 წლის გამოცდილება პრემიუმ ავტომობილებზე.</div>
-                <div class="team-works"><div class="team-works-title">ნამუშევრები</div><div class="team-works-grid"><div class="work-thumb">🎨</div><div class="work-thumb">🔬</div><div class="work-thumb">⚡</div><div class="work-thumb">🏅</div></div></div>
-            </div>
-        </div>
+<!-- ═══════════════════════════════════
+     REVIEWS
+═══════════════════════════════════ -->
+<section id="reviews" aria-labelledby="reviews-heading">
+  <div class="reviews-header">
+    <div>
+      <div class="section-eyebrow">შეფასებები</div>
+      <h2 class="section-h2" id="reviews-heading">კლიენტები გვენდობიან</h2>
     </div>
+    <div class="reviews-rating-big">
+      <div class="reviews-score">4.9</div>
+      <div class="reviews-stars-row">★★★★★</div>
+      <div class="reviews-count">150+ შეფასება</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <article class="review-card">
+      <div class="review-top">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar" aria-hidden="true">გ</div>
+          <div>
+            <div class="reviewer-name">გიორგი ბ.</div>
+            <div class="reviewer-service">Premium სერვისი</div>
+          </div>
+        </div>
+        <div class="review-stars" aria-label="5 ვარსკვლავი">★★★★★</div>
+      </div>
+      <p class="review-text">საოცარი შედეგი! BMW-ი ახლივით გამოიყურება. გუნდი პროფესიონალია, დრო ზუსტად დაიცვეს. ნამდვილად ვიდავშნებ კვლავ.</p>
+      <div class="review-date">2 კვირის წინ</div>
+    </article>
+    <article class="review-card">
+      <div class="review-top">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar" aria-hidden="true">ნ</div>
+          <div>
+            <div class="reviewer-name">ნინო კ.</div>
+            <div class="reviewer-service">Detailing</div>
+          </div>
+        </div>
+        <div class="review-stars" aria-label="5 ვარსკვლავი">★★★★★</div>
+      </div>
+      <p class="review-text">Detailing სერვისი 10-დან 10! ძველი Lexus-ი ახლობელივით დაბრუნდა. ფოტო-ანგარიში ძალიან მოხერხებულია. ჩემი ნომ.1 სამრეცხაო!</p>
+      <div class="review-date">1 თვის წინ</div>
+    </article>
+    <article class="review-card">
+      <div class="review-top">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar" aria-hidden="true">ლ</div>
+          <div>
+            <div class="reviewer-name">ლაშა მ.</div>
+            <div class="reviewer-service">Express სერვისი</div>
+          </div>
+        </div>
+        <div class="review-stars" aria-label="5 ვარსკვლავი">★★★★★</div>
+      </div>
+      <p class="review-text">Express-ი 20 წუთში მართლა მზადაა! ონლაინ ჯავშანი ძალიან მარტივია. ყოველ კვირა ვსარგებლობ, ფასი-ხარისხი იდეალურია.</p>
+      <div class="review-date">3 კვირის წინ</div>
+    </article>
+  </div>
+  <div style="text-align: center; margin-top: 32px;">
+    <div class="google-badge">⭐ Google Reviews-ზე 4.9 · 150+ შეფასება</div>
+  </div>
 </section>
 
-<section id="contact">
-    <h2>საკონტაქტო</h2>
-    <p class="contact-sub">დაგვიკავშირდით ნებისმიერი არხით</p>
-    <div class="contact-wrapper">
-        <div class="contact-phones-row">
-            <div class="phone-card-new">
-                <div class="phone-icon-new"><img src="./phone.jpg" alt="" style="width:50px;border-radius:10px;"></div>
-                <div>
-                    <div class="phone-label-new">მთავარი ნომერი</div>
-                    <div class="phone-val-new">+995 555 12 34 56</div>
-                    <div class="phone-sub-new">ორშ–შაბ: 09:00–21:00</div>
-                </div>
-            </div>
-            <div class="phone-card-new">
-                <div class="phone-icon-new"><img src="./whatsapp.jpg" alt="" style="width:50px;border-radius:10px;"></div>
-                <div>
-                    <div class="phone-label-new">WhatsApp / Viber</div>
-                    <div class="phone-val-new">+995 599 98 76 54</div>
-                    <div class="phone-sub-new">24/7 შეტყობინებები</div>
-                </div>
-            </div>
-        </div>
-        <div class="social-row">
-            <a class="social-card" href="https://instagram.com/carwash.ge" target="_blank">
-                <div class="social-icon-wrap si-ig"><img src="./3c0b5296e29c391d50a7580b3e949a34.jpg" alt="" style="width:50px;border-radius:10px;"></div>
-                <div class="social-name">Instagram</div><div class="social-handle">@carwash.ge</div>
-            </a>
-            <a class="social-card" href="https://facebook.com/carwash.ge" target="_blank">
-                <div class="social-icon-wrap si-fb"><img src="./db19332a23a44f772c5a1855a8aabf70.jpg" alt="" style="width:50px;border-radius:10px;"></div>
-                <div class="social-name">Facebook</div><div class="social-handle">CarWash Georgia</div>
-            </a>
-            <a class="social-card" href="https://tiktok.com/@carwash.ge" target="_blank">
-                <div class="social-icon-wrap si-tt"><img src="./tiktok.jpg" alt="" style="width:50px;border-radius:10px;"></div>
-                <div class="social-name">TikTok</div><div class="social-handle">@carwash.ge</div>
-            </a>
-            <div class="social-card" style="cursor:default;">
-                <div class="social-icon-wrap si-loc">📍</div>
-                <div class="social-name">მდებარეობა</div><div class="social-handle">ვაკე, ყაზბეგის გამზ. 12</div>
-            </div>
-        </div>
+<!-- ═══════════════════════════════════
+     GALLERY
+═══════════════════════════════════ -->
+<section id="gallery" aria-labelledby="gallery-heading">
+  <div class="section-header">
+    <div class="section-eyebrow">გალერეა</div>
+    <h2 class="section-h2" id="gallery-heading">ჩვენი ნამუშევრები</h2>
+    <p class="section-sub">სანამ და შემდეგ — ყველა სურათი რეალური კლიენტის მანქანაა.</p>
+  </div>
+  <div class="gallery-grid" role="list">
+    <div class="gallery-item wide" role="listitem">
+      <div class="gallery-placeholder p1">
+        <div class="gallery-placeholder-icon" aria-hidden="true">🚗</div>
+        <div class="gallery-placeholder-text">BEFORE / AFTER</div>
+      </div>
+      <div class="gallery-before-after">Premium · BMW</div>
     </div>
+    <div class="gallery-item tall" role="listitem">
+      <div class="gallery-placeholder p2" style="height:100%">
+        <div class="gallery-placeholder-icon" aria-hidden="true">✨</div>
+        <div class="gallery-placeholder-text">DETAILING</div>
+      </div>
+      <div class="gallery-before-after">Detailing · Lexus</div>
+    </div>
+    <div class="gallery-item" role="listitem">
+      <div class="gallery-placeholder p3">
+        <div class="gallery-placeholder-icon" aria-hidden="true">💧</div>
+        <div class="gallery-placeholder-text">EXPRESS</div>
+      </div>
+    </div>
+    <div class="gallery-item" role="listitem">
+      <div class="gallery-placeholder p1">
+        <div class="gallery-placeholder-icon" aria-hidden="true">🏆</div>
+        <div class="gallery-placeholder-text">CERAMIC</div>
+      </div>
+      <div class="gallery-before-after">კერამიკა · Porsche</div>
+    </div>
+    <div class="gallery-item" role="listitem">
+      <div class="gallery-placeholder p2">
+        <div class="gallery-placeholder-icon" aria-hidden="true">🎨</div>
+        <div class="gallery-placeholder-text">POLISH</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="booking">
-    <h2>დაჯავშნეთ ვიზიტი</h2>
-    <p class="booking-sub">შეავსეთ ფორმა და ჩვენ დაგიკავშირდებით დასტურისთვის</p>
-    <div class="booking-form">
-
-        <div class="form-group">
-            <label class="form-label">სერვისი</label>
-            <div class="service-selector">
-                <div class="service-option active" onclick="selectService(this)">
-                    <div class="so-name">Express</div><div class="so-price">20 ₾ · 20 წთ</div>
-                </div>
-                <div class="service-option" onclick="selectService(this)">
-                    <div class="so-name">Premium</div><div class="so-price">45 ₾ · 45 წთ</div>
-                </div>
-                <div class="service-option" onclick="selectService(this)">
-                    <div class="so-name">Detailing</div><div class="so-price">120 ₾ · 3 სთ</div>
-                </div>
-            </div>
-        </div>
-
-        <hr class="form-divider">
-
-        <div class="form-row form-group">
-            <div><label class="form-label">სახელი</label><input id="f-firstname" type="text" class="form-input" placeholder="გიორგი"></div>
-            <div><label class="form-label">გვარი</label><input id="f-lastname" type="text" class="form-input" placeholder="მამულაშვილი"></div>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">ტელეფონი</label>
-            <input id="f-phone" type="tel" class="form-input" placeholder="+995 5XX XX XX XX">
-        </div>
-
-        <div class="form-row form-group">
-            <div>
-                <label class="form-label">მანქანის ტიპი</label>
-                <select id="f-cartype" class="form-select form-input">
-                    <option value="">აირჩიეთ...</option>
-                    <option>სედანი</option><option>ჯიპი / SUV</option>
-                    <option>ჰეჩბექი</option><option>უნივერსალი</option>
-                    <option>მინივენი</option><option>პიკაპი</option><option>კუპე</option>
-                </select>
-            </div>
-            <div>
-                <label class="form-label">სერვისის ტიპი</label>
-                <select id="f-servicetype" class="form-select form-input">
-                    <option value="">აირჩიეთ...</option>
-                    <option>სამრეცხაოში მობრძანება</option>
-                    <option>მძღოლის გამოძახება</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-row form-group">
-            <div><label class="form-label">თარიღი</label><input id="f-date" type="date" class="form-input"></div>
-            <div>
-                <label class="form-label">დრო</label>
-                <select id="f-time" class="form-select form-input">
-                    <option value="">აირჩიეთ...</option>
-                    <option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option>
-                    <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
-                    <option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
-                    <option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option>
-                    <option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option>
-                    <option>19:00</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">შენიშვნა (არასავალდებულო)</label>
-            <textarea id="f-note" class="form-textarea form-input" placeholder="დამატებითი ინფორმაცია..."></textarea>
-        </div>
-
-        <hr class="form-divider">
-
-        <div class="form-group">
-            <label class="form-label">გადახდის მეთოდი</label>
-            <div class="payment-selector">
-                <div class="pay-option active" id="pay-cash" onclick="selectPayment('cash')">
-                    <div class="pay-icon">💵</div>
-                    <div><div class="pay-name">ქეში</div><div class="pay-desc">ადგილზე გადახდა</div></div>
-                </div>
-                <div class="pay-option" id="pay-card" onclick="selectPayment('card')">
-                    <div class="pay-icon">💳</div>
-                    <div><div class="pay-name">ბარათი</div><div class="pay-desc">გადარიცხვა</div></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bank-section" id="bank-section">
-            <div class="bank-note">გადარიცხეთ თანხა ქვემოთ მოცემულ ანგარიშზე და ატვირთეთ ქვითარი.<br><strong>დანიშნულებაში მიუთითეთ თქვენი სახელი და გვარი.</strong></div>
-            <div class="bank-card tbc">
-                <div class="bank-left">
-                    <div class="bank-logo"><img src="./tbc.png" alt="" style="width:44px;border-radius:10px;"></div>
-                    <div><div class="bank-name">თიბისი ბანკი</div><div class="bank-iban" onclick="copyIban('GE29TB7522145061500013', this)">GE29 TB75 2214 5061 5000 13</div></div>
-                </div>
-                <button class="bank-copy-btn" onclick="copyIban('GE29TB7522145061500013', this)">კოპირება</button>
-            </div>
-            <div class="bank-card bog">
-                <div class="bank-left">
-                    <div class="bank-logo"><img src="./images.png" alt="" style="width:44px;border-radius:10px;"></div>
-                    <div><div class="bank-name">საქართველოს ბანკი</div><div class="bank-iban" onclick="copyIban('GE80BG0000000123456789', this)">GE80 BG00 0000 0123 4567 89</div></div>
-                </div>
-                <button class="bank-copy-btn" onclick="copyIban('GE80BG0000000123456789', this)">კოპირება</button>
-            </div>
-            <div class="form-group" style="margin-bottom:0; margin-top:4px;">
-                <label class="form-label">ქვითრის ატვირთვა</label>
-                <div class="upload-area" id="upload-area">
-                    <input type="file" accept="image/*,.pdf" onchange="handleFile(this)">
-                    <div class="upload-icon">📎</div>
-                    <div class="upload-title">ატვირთეთ ქვითარი ან სქრინშოთი</div>
-                    <div class="upload-sub">JPG, PNG, PDF · მაქს. 10MB</div>
-                    <div class="upload-filename" id="upload-filename"></div>
-                </div>
-            </div>
-        </div>
-
-        <button class="submit-btn" id="submit-btn" onclick="submitBooking()">დაჯავშნა →</button>
-    </div>
+<!-- ═══════════════════════════════════
+     TEAM
+═══════════════════════════════════ -->
+<section id="team" aria-labelledby="team-heading">
+  <div class="section-header">
+    <div class="section-eyebrow">გუნდი</div>
+    <h2 class="section-h2" id="team-heading">ჩვენი თანამშრომლები</h2>
+    <p class="section-sub">პროფესიონალები, რომლებიც ზრუნავენ შენს მანქანაზე</p>
+  </div>
+  <div class="team-grid">
+    <article class="team-card">
+      <div class="team-photo"><div class="team-initials" aria-hidden="true">გ</div><div class="team-badge-pill">⭐ მთავარი</div></div>
+      <div class="team-body">
+        <div class="team-name">გიორგი მამულაშვილი</div>
+        <div class="team-role">🔧 მთავარი დეტეილერი</div>
+        <div class="team-desc">8 წლის გამოცდილება. სპეციალიზაცია კერამიკულ დაფარვასა და პოლიშინგში.</div>
+        <div class="team-exp">8 წელი გამოცდ.</div>
+      </div>
+    </article>
+    <article class="team-card">
+      <div class="team-photo"><div class="team-initials" aria-hidden="true">ნ</div><div class="team-badge-pill">💎 Premium</div></div>
+      <div class="team-body">
+        <div class="team-name">ნინო კვარაცხელია</div>
+        <div class="team-role">✨ სალონის სპეციალისტი</div>
+        <div class="team-desc">5 წლის გამოცდილება. ტყავის კონდიციონირება და სალონის სრული აღდგენა.</div>
+        <div class="team-exp">5 წელი გამოცდ.</div>
+      </div>
+    </article>
+    <article class="team-card">
+      <div class="team-photo"><div class="team-initials" aria-hidden="true">დ</div><div class="team-badge-pill">🚀 Express</div></div>
+      <div class="team-body">
+        <div class="team-name">დავით ბერიძე</div>
+        <div class="team-role">💧 Express სპეციალისტი</div>
+        <div class="team-desc">სწრაფი და ხარისხიანი გარე რეცხვის ოსტატი. 200+ კმაყოფილი კლიენტი ყოველ თვე.</div>
+        <div class="team-exp">200+ / თვეში</div>
+      </div>
+    </article>
+    <article class="team-card">
+      <div class="team-photo"><div class="team-initials" aria-hidden="true">ლ</div><div class="team-badge-pill">🏆 Detailing</div></div>
+      <div class="team-body">
+        <div class="team-name">ლაშა გელაშვილი</div>
+        <div class="team-role">🏆 ლაქის სპეციალისტი</div>
+        <div class="team-desc">ლაქის აღდგენის ექსპერტი. 6 წლის გამოცდილება პრემიუმ ავტომობილებზე.</div>
+        <div class="team-exp">6 წელი გამოცდ.</div>
+      </div>
+    </article>
+  </div>
 </section>
 
-<div class="toast" id="toast"></div>
-<div class="copy-toast" id="copy-toast">✓ ანგარიშის ნომერი დაკოპირდა</div>
+<!-- ═══════════════════════════════════
+     FAQ
+═══════════════════════════════════ -->
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="section-header">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-h2" id="faq-heading">ხშირად დასმული კითხვები</h2>
+  </div>
+  <div class="faq-list" role="list">
+    <div class="faq-item" role="listitem">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" tabindex="0">
+        <span class="faq-q-text">მძღოლის გამოძახება — სად მიდის მანქანა?</span>
+        <span class="faq-arrow" aria-hidden="true">+</span>
+      </div>
+      <div class="faq-a">ჩვენი სერტიფიცირებული მძღოლი მოგაკითხავთ, მანქანას სამრეცხაოში — ყაზბეგის გამზ. 12 — გადაიყვანს, სერვისის შემდეგ კი უკან დაგიბრუნებთ. GPS ტრეკინგი ხელმისაწვდომია მოთხოვნით.</div>
+    </div>
+    <div class="faq-item" role="listitem">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" tabindex="0">
+        <span class="faq-q-text">ონლაინ გადახდა — ქვითარი სჭირდება?</span>
+        <span class="faq-arrow" aria-hidden="true">+</span>
+      </div>
+      <div class="faq-a">ბარათით გადახდის შემთხვევაში საჭიროა გადარიცხვის ქვითრის ატვირთვა ჯავშნის ფორმაში. ქეში გადახდისას ქვითარი არ სჭირდება — ადგილზე გადაიხდით.</div>
+    </div>
+    <div class="faq-item" role="listitem">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" tabindex="0">
+        <span class="faq-q-text">შემიძლია ჯავშანი გავაუქმო ან გადავავადო?</span>
+        <span class="faq-arrow" aria-hidden="true">+</span>
+      </div>
+      <div class="faq-a">კი, გამოძახებამდე მინიმუმ 2 საათით ადრე შეგიძლიათ ჯავშნის გაუქმება ან გადავადება. დაგვიკავშირდით ტელეფონით ან WhatsApp-ით.</div>
+    </div>
+    <div class="faq-item" role="listitem">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" tabindex="0">
+        <span class="faq-q-text">ყველა ტიპის მანქანაზე მუშაობთ?</span>
+        <span class="faq-arrow" aria-hidden="true">+</span>
+      </div>
+      <div class="faq-a">დიახ — სედანი, SUV, ჰეჩბექი, უნივერსალი, მინივენი, პიკაპი, კუპე. განსაკუთრებით დიდი მანქანების (ავტობუსი, სატვირთო) შემთხვევაში წინასწარ გაგვიკავშირდით ფასის გარკვევისთვის.</div>
+    </div>
+    <div class="faq-item" role="listitem">
+      <div class="faq-q" onclick="toggleFaq(this)" role="button" aria-expanded="false" tabindex="0">
+        <span class="faq-q-text">Detailing-ის ფოტო-ანგარიში რა მოიცავს?</span>
+        <span class="faq-arrow" aria-hidden="true">+</span>
+      </div>
+      <div class="faq-a">სერვისის დაწყებამდე და დასრულების შემდეგ ვიღებთ 20+ ფოტოს — კუზოვი, სალონი, დისკები, სარკეები. ანგარიში WhatsApp-ით გეგზავნებათ სერვისის დასრულებიდან 30 წუთში.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     CONTACT
+═══════════════════════════════════ -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="section-header">
+    <div class="section-eyebrow">საკონტაქტო</div>
+    <h2 class="section-h2" id="contact-heading">დაგვიკავშირდით</h2>
+    <p class="section-sub">ნებისმიერი კითხვა — ზარით, WhatsApp-ით ან სოციალური მედიით</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <a href="tel:+995555123456" class="contact-card">
+        <div class="contact-card-icon" aria-hidden="true">📞</div>
+        <div>
+          <div class="contact-card-label">მთავარი ნომერი</div>
+          <div class="contact-card-val">+995 555 12 34 56</div>
+          <div class="contact-card-sub">ორშ–შაბ: 09:00–21:00</div>
+        </div>
+      </a>
+      <a href="https://wa.me/995599987654" class="contact-card" target="_blank" rel="noopener">
+        <div class="contact-card-icon" aria-hidden="true">💬</div>
+        <div>
+          <div class="contact-card-label">WhatsApp / Viber</div>
+          <div class="contact-card-val">+995 599 98 76 54</div>
+          <div class="contact-card-sub">24/7 შეტყობინებები</div>
+        </div>
+      </a>
+      <div class="social-grid">
+        <a class="social-btn" href="https://instagram.com/carwash.ge" target="_blank" rel="noopener" aria-label="Instagram @carwash.ge">
+          <span class="social-btn-icon" aria-hidden="true">📸</span>
+          <div><div class="social-btn-name">Instagram</div><div class="social-btn-handle">@carwash.ge</div></div>
+        </a>
+        <a class="social-btn" href="https://facebook.com/carwash.ge" target="_blank" rel="noopener" aria-label="Facebook CarWash Georgia">
+          <span class="social-btn-icon" aria-hidden="true">👥</span>
+          <div><div class="social-btn-name">Facebook</div><div class="social-btn-handle">CarWash Georgia</div></div>
+        </a>
+        <a class="social-btn" href="https://tiktok.com/@carwash.ge" target="_blank" rel="noopener" aria-label="TikTok @carwash.ge">
+          <span class="social-btn-icon" aria-hidden="true">🎵</span>
+          <div><div class="social-btn-name">TikTok</div><div class="social-btn-handle">@carwash.ge</div></div>
+        </a>
+        <div class="social-btn">
+          <span class="social-btn-icon" aria-hidden="true">⏰</span>
+          <div>
+            <div class="social-btn-name">სამ. საათები</div>
+            <div class="social-btn-handle">ყო. 09:00–21:00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hours table -->
+      <div style="background: var(--card-bg); border: 1px solid var(--gold-border); border-radius: var(--radius-md); padding: 24px 28px; margin-top: 4px;">
+        <div style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em;">სამუშაო საათები</div>
+        <table class="hours-table">
+          <tr><td>ორშაბათი — პარასკევი</td><td>09:00 – 21:00</td></tr>
+          <tr><td>შაბათი</td><td>10:00 – 20:00</td></tr>
+          <tr><td>კვირა</td><td>11:00 – 18:00</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="contact-map" aria-label="CarWash მდებარეობის რუქა">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.3!2d44.7975!3d41.7151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zVmFrZQ!5e0!3m2!1ska!2sge!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="CarWash Tbilisi — ყაზბეგის გამზ. 12, ვაკე"
+        style="min-height:400px;">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     BOOKING
+═══════════════════════════════════ -->
+<section id="booking" aria-labelledby="booking-heading">
+  <div class="section-header">
+    <div class="section-eyebrow">ჯავშანი</div>
+    <h2 class="section-h2" id="booking-heading">დაჯავშნეთ ვიზიტი</h2>
+    <p class="section-sub">შეავსეთ ფორმა — ჩვენ დაგიკავშირდებით დასტურისთვის</p>
+  </div>
+  <div class="booking-form" role="form" aria-label="ვიზიტის ჯავშნის ფორმა">
+    <div class="form-group">
+      <label class="form-label" id="service-label">სერვისი</label>
+      <div class="service-selector" role="group" aria-labelledby="service-label">
+        <div class="service-opt active" onclick="selectService(this)" role="radio" aria-checked="true" tabindex="0">
+          <div class="so-name">Express</div><div class="so-price">20 ₾ · 20 წთ</div>
+        </div>
+        <div class="service-opt" onclick="selectService(this)" role="radio" aria-checked="false" tabindex="0">
+          <div class="so-name">Premium</div><div class="so-price">45 ₾ · 45 წთ</div>
+        </div>
+        <div class="service-opt" onclick="selectService(this)" role="radio" aria-checked="false" tabindex="0">
+          <div class="so-name">Detailing</div><div class="so-price">120 ₾ · 3 სთ</div>
+        </div>
+      </div>
+    </div>
+    <hr class="form-divider">
+    <div class="form-row form-group">
+      <div>
+        <label class="form-label" for="f-firstname">სახელი</label>
+        <input id="f-firstname" type="text" class="form-input" placeholder="გიორგი" autocomplete="given-name">
+      </div>
+      <div>
+        <label class="form-label" for="f-lastname">გვარი</label>
+        <input id="f-lastname" type="text" class="form-input" placeholder="მამულაშვილი" autocomplete="family-name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="f-phone">ტელეფონი</label>
+      <input id="f-phone" type="tel" class="form-input" placeholder="+995 5XX XX XX XX" autocomplete="tel">
+    </div>
+    <div class="form-row form-group">
+      <div>
+        <label class="form-label" for="f-cartype">მანქანის ტიპი</label>
+        <select id="f-cartype" class="form-select form-input">
+          <option value="">აირჩიეთ...</option>
+          <option>სედანი</option><option>ჯიპი / SUV</option>
+          <option>ჰეჩბექი</option><option>უნივერსალი</option>
+          <option>მინივენი</option><option>პიკაპი</option><option>კუპე</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label" for="f-servicetype">სერვისის ტიპი</label>
+        <select id="f-servicetype" class="form-select form-input">
+          <option value="">აირჩიეთ...</option>
+          <option>სამრეცხაოში მობრძანება</option>
+          <option>მძღოლის გამოძახება</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row form-group">
+      <div>
+        <label class="form-label" for="f-date">თარიღი</label>
+        <input id="f-date" type="date" class="form-input">
+      </div>
+      <div>
+        <label class="form-label" for="f-time">დრო</label>
+        <select id="f-time" class="form-select form-input">
+          <option value="">აირჩიეთ...</option>
+          <option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option>
+          <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
+          <option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
+          <option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option>
+          <option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option>
+          <option>19:00</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="f-note">შენიშვნა (არასავალდებულო)</label>
+      <textarea id="f-note" class="form-textarea form-input" placeholder="დამატებითი ინფორმაცია..."></textarea>
+    </div>
+    <hr class="form-divider">
+    <div class="form-group">
+      <label class="form-label" id="pay-label">გადახდის მეთოდი</label>
+      <div class="payment-selector" role="group" aria-labelledby="pay-label">
+        <div class="pay-opt active" id="pay-cash" onclick="selectPayment('cash')" role="radio" aria-checked="true" tabindex="0">
+          <div class="pay-icon-wrap" aria-hidden="true">💵</div>
+          <div><div class="pay-name">ქეში</div><div class="pay-desc">ადგილზე გადახდა</div></div>
+        </div>
+        <div class="pay-opt" id="pay-card" onclick="selectPayment('card')" role="radio" aria-checked="false" tabindex="0">
+          <div class="pay-icon-wrap" aria-hidden="true">💳</div>
+          <div><div class="pay-name">ბარათი</div><div class="pay-desc">გადარიცხვა</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="bank-section" id="bank-section" aria-live="polite">
+      <div class="bank-note">გადარიცხეთ თანხა და ატვირთეთ ქვითარი.<br><strong>დანიშნულებაში: სახელი + გვარი.</strong></div>
+      <div class="bank-card tbc">
+        <div class="bank-left">
+          <div class="bank-logo"><img src="./tbc.png" alt="TBC Bank" width="40" height="40"></div>
+          <div>
+            <div class="bank-name">თიბისი ბანკი</div>
+            <div class="bank-iban" id="iban-tbc" onclick="copyIban('tbc')">GE29 TB75 2214 5061 5000 13</div>
+          </div>
+        </div>
+        <button class="bank-copy-btn" id="copy-tbc" onclick="copyIban('tbc')" aria-label="TBC IBAN-ის კოპირება">კოპირება</button>
+      </div>
+      <div class="bank-card bog">
+        <div class="bank-left">
+          <div class="bank-logo"><img src="./images.png" alt="Bank of Georgia" width="40" height="40"></div>
+          <div>
+            <div class="bank-name">საქართველოს ბანკი</div>
+            <div class="bank-iban" id="iban-bog" onclick="copyIban('bog')">GE80 BG00 0000 0123 4567 89</div>
+          </div>
+        </div>
+        <button class="bank-copy-btn" id="copy-bog" onclick="copyIban('bog')" aria-label="BOG IBAN-ის კოპირება">კოპირება</button>
+      </div>
+      <div class="form-group" style="margin-bottom:0; margin-top:4px;">
+        <label class="form-label" for="receipt-upload">ქვითრის ატვირთვა</label>
+        <div class="upload-area" id="upload-area">
+          <input type="file" id="receipt-upload" accept="image/*,.pdf" onchange="handleFile(this)" aria-label="ქვითრის ფაილის ატვირთვა">
+          <div class="upload-icon" aria-hidden="true">📎</div>
+          <div class="upload-title">ატვირთეთ ქვითარი ან სქრინშოთი</div>
+          <div class="upload-sub">JPG, PNG, PDF · მაქს. 10MB</div>
+          <div class="upload-filename" id="upload-filename" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <button class="submit-btn" id="submit-btn" onclick="submitBooking()">დაჯავშნა →</button>
+  </div>
+</section>
+</main>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom: 4px;">
+        <img src="./carwash_logo.png" alt="CarWash logo" width="40" height="40">
+        <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:800;"><span style="color:var(--gold);">Car</span><span style="color:var(--text-primary);">Wash</span></div>
+      </div>
+      <p>პროფესიონალური სამრეცხაო სერვისი თბილისში. სწრაფი, ხარისხიანი, მოხერხებული.</p>
+    </div>
+    <div class="footer-col">
+      <h4>სერვისები</h4>
+      <a href="#services">Express — 20 ₾</a>
+      <a href="#services">Premium — 45 ₾</a>
+      <a href="#services">Detailing — 120 ₾</a>
+      <a href="#how">მძღოლის გამოძახება</a>
+    </div>
+    <div class="footer-col">
+      <h4>ნავიგაცია</h4>
+      <a href="#main">მთავარი</a>
+      <a href="#reviews">შეფასებები</a>
+      <a href="#team">გუნდი</a>
+      <a href="#faq">FAQ</a>
+      <a href="#booking">დაჯავშნა</a>
+    </div>
+    <div class="footer-col">
+      <h4>კონტაქტი</h4>
+      <a href="tel:+995555123456">+995 555 12 34 56</a>
+      <a href="https://wa.me/995599987654" target="_blank" rel="noopener">WhatsApp</a>
+      <span>ყაზბეგის გამზ. 12, ვაკე</span>
+      <span>ყოველდღე 09:00–21:00</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 CarWash Tbilisi. ყველა უფლება დაცულია.</div>
+    <div class="footer-made">Made with <span>♥</span> in Tbilisi</div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════
+     MOBILE BOTTOM NAV
+═══════════════════════════════════ -->
+<nav class="mobile-bottom-nav" aria-label="მობილური ქვედა ნავიგაცია">
+  <a href="#main"     class="mob-nav-item active"><span class="mob-nav-icon" aria-hidden="true">🏠</span><span class="mob-nav-label">მთავარი</span></a>
+  <a href="#services" class="mob-nav-item"><span class="mob-nav-icon" aria-hidden="true">✨</span><span class="mob-nav-label">სერვისი</span></a>
+  <a href="#booking"  class="mob-nav-item mob-nav-book"><span class="mob-nav-icon" aria-hidden="true">📅</span><span class="mob-nav-label">ჯავშანი</span></a>
+  <a href="#reviews"  class="mob-nav-item"><span class="mob-nav-icon" aria-hidden="true">⭐</span><span class="mob-nav-label">შეფასება</span></a>
+  <a href="#contact"  class="mob-nav-item"><span class="mob-nav-icon" aria-hidden="true">📞</span><span class="mob-nav-label">კონტაქტი</span></a>
+</nav>
+
+<!-- Toasts -->
+<div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+<div class="copy-toast" id="copy-toast" role="status" aria-live="polite">✓ ანგარიშის ნომერი დაკოპირდა</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-    emailjs.init('_GmANjq9R8jC6tfEx');
+  /* ── EmailJS init ── */
+  (function(){
+    if (typeof emailjs !== 'undefined') emailjs.init('_GmANjq9R8jC6tfEx');
+  })();
 
-    function selectService(el) {
-        document.querySelectorAll('.service-option').forEach(o => o.classList.remove('active'));
-        el.classList.add('active');
+  /* ── Open/Closed status ── */
+  (function(){
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun..6=Sat
+    const h   = now.getHours();
+    const m   = now.getMinutes();
+    const mins = h * 60 + m;
+    let open = false;
+    if (day >= 1 && day <= 5) open = mins >= 540 && mins < 1260; // Mon–Fri 9–21
+    else if (day === 6)        open = mins >= 600 && mins < 1200; // Sat 10–20
+    else                       open = mins >= 660 && mins < 1080; // Sun 11–18
+    const pill = document.getElementById('open-status');
+    const txt  = document.getElementById('open-text');
+    if (pill && txt) {
+      if (!open) {
+        pill.style.background = 'rgba(239,68,68,0.15)';
+        pill.style.borderColor = 'rgba(239,68,68,0.35)';
+        pill.querySelector('.open-dot').style.background = '#f87171';
+        txt.style.color = '#f87171';
+        txt.textContent  = 'დახურულია';
+      }
     }
+    /* Set min date for booking */
+    const d = document.getElementById('f-date');
+    if (d) { const today = new Date().toISOString().split('T')[0]; d.min = today; }
+  })();
 
-    function selectPayment(type) {
-        document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('active'));
-        document.getElementById('pay-' + type).classList.add('active');
-        const bs = document.getElementById('bank-section');
-        type === 'card' ? bs.classList.add('visible') : bs.classList.remove('visible');
-    }
+  /* ── Mobile menu ── */
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileNav  = document.getElementById('mobile-nav');
+  menuToggle.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    menuToggle.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+  /* Close on outside click */
+  document.addEventListener('click', e => {
+    if (!menuToggle.contains(e.target) && !mobileNav.contains(e.target)) closeMobileNav();
+  });
 
-    function copyIban(iban, btn) {
-        navigator.clipboard.writeText(iban).then(() => {
-            if (btn.classList.contains('bank-copy-btn')) {
-                const orig = btn.textContent;
-                btn.textContent = '✓ დაკოპირდა';
-                btn.classList.add('copied');
-                setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
-            }
-            const t = document.getElementById('copy-toast');
-            t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 2000);
+  /* ── Mobile bottom nav active state ── */
+  const mobItems = document.querySelectorAll('.mob-nav-item');
+  const sections = ['main','services','booking','reviews','contact'];
+  window.addEventListener('scroll', () => {
+    let cur = 'main';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) cur = id;
+    });
+    mobItems.forEach(item => {
+      const href = item.getAttribute('href')?.replace('#','');
+      item.classList.toggle('active', href === cur);
+    });
+  }, { passive: true });
+
+  /* ── FAQ accordion ── */
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.toggle('open');
+    el.setAttribute('aria-expanded', isOpen);
+  }
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFaq(q); } });
+  });
+
+  /* ── Service selector ── */
+  function selectService(el) {
+    document.querySelectorAll('.service-opt').forEach(o => { o.classList.remove('active'); o.setAttribute('aria-checked','false'); });
+    el.classList.add('active');
+    el.setAttribute('aria-checked','true');
+  }
+  document.querySelectorAll('.service-opt').forEach(opt => {
+    opt.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectService(opt); } });
+  });
+
+  /* ── Payment selector ── */
+  function selectPayment(type) {
+    document.querySelectorAll('.pay-opt').forEach(o => { o.classList.remove('active'); o.setAttribute('aria-checked','false'); });
+    const el = document.getElementById('pay-' + type);
+    if (el) { el.classList.add('active'); el.setAttribute('aria-checked','true'); }
+    const bs = document.getElementById('bank-section');
+    if (bs) type === 'card' ? bs.classList.add('visible') : bs.classList.remove('visible');
+  }
+  document.querySelectorAll('.pay-opt').forEach(opt => {
+    opt.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectPayment(opt.id.replace('pay-','')); } });
+  });
+
+  /* ── IBAN copy — values stored in JS, not visible in DOM ── */
+  const IBANS = { tbc: 'GE29TB7522145061500013', bog: 'GE80BG0000000123456789' };
+  function copyIban(bank) {
+    navigator.clipboard.writeText(IBANS[bank]).then(() => {
+      const btn = document.getElementById('copy-' + bank);
+      if (btn) { const orig = btn.textContent; btn.textContent = '✓ დაკოპირდა'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000); }
+      const t = document.getElementById('copy-toast');
+      t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000);
+    }).catch(() => showToast('❌ კოპირება ვერ მოხდა', true));
+  }
+
+  /* ── File upload ── */
+  function handleFile(input) {
+    const file = input.files[0];
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) { showToast('❌ ფაილი ძალიან დიდია (მაქს. 10MB)', true); input.value = ''; return; }
+    document.getElementById('upload-area').classList.add('has-file');
+    const lbl = document.getElementById('upload-filename');
+    lbl.textContent = '✓ ' + file.name; lbl.style.display = 'block';
+  }
+
+  /* ── Toast ── */
+  function showToast(msg, isError) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    isError ? t.classList.add('error') : t.classList.remove('error');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4500);
+  }
+
+  /* ── Submit ── */
+  function submitBooking() {
+    const v = id => document.getElementById(id)?.value?.trim();
+    const firstName   = v('f-firstname');
+    const lastName    = v('f-lastname');
+    const phone       = v('f-phone');
+    const carType     = v('f-cartype') || document.getElementById('f-cartype')?.value;
+    const serviceType = v('f-servicetype') || document.getElementById('f-servicetype')?.value;
+    const date        = v('f-date');
+    const time        = document.getElementById('f-time')?.value;
+    const note        = v('f-note');
+    const service     = document.querySelector('.service-opt.active .so-name')?.textContent?.trim() || '';
+    const payment     = document.querySelector('.pay-opt.active .pay-name')?.textContent?.trim() || '';
+    const errors = [];
+    if (!firstName || !lastName) errors.push('⚠️ შეიყვანეთ სახელი და გვარი');
+    else if (firstName.length < 2 || lastName.length < 2) errors.push('⚠️ სახელი/გვარი ძალიან მოკლეა');
+    if (!phone) errors.push('⚠️ შეიყვანეთ ტელეფონის ნომერი');
+    if (!carType) errors.push('⚠️ აირჩიეთ მანქანის ტიპი');
+    if (!serviceType) errors.push('⚠️ აირჩიეთ სერვისის ტიპი');
+    if (!date) errors.push('⚠️ აირჩიეთ თარიღი');
+    if (!time) errors.push('⚠️ აირჩიეთ დრო');
+    if (errors.length) { showToast(errors[0], true); return; }
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true; btn.textContent = '⏳ იგზავნება...';
+    const params = { name: firstName + ' ' + lastName, phone, service, car_type: carType, service_type: serviceType, date, time, payment, note: note || '—' };
+    if (typeof emailjs !== 'undefined') {
+      emailjs.send('service_123', 'template_job8b2f', params)
+        .then(() => {
+          showToast('✅ ჯავშანი წარმატებით გაიგზავნა!', false);
+          btn.disabled = false; btn.textContent = 'დაჯავშნა →';
+          ['f-firstname','f-lastname','f-phone','f-note'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+          ['f-cartype','f-servicetype','f-time'].forEach(id => { const el = document.getElementById(id); if(el) el.selectedIndex = 0; });
+          document.getElementById('f-date').value = '';
+        })
+        .catch(err => {
+          showToast('❌ შეცდომა: ' + (err?.text || err?.status || 'სცადეთ თავიდან'), true);
+          btn.disabled = false; btn.textContent = 'დაჯავშნა →';
         });
+    } else {
+      setTimeout(() => { showToast('✅ ჯავშანი მიღებულია! (EmailJS offline)', false); btn.disabled = false; btn.textContent = 'დაჯავშნა →'; }, 800);
     }
+  }
 
-    function handleFile(input) {
-        const file = input.files[0];
-        if (!file) return;
-        document.getElementById('upload-area').classList.add('has-file');
-        const lbl = document.getElementById('upload-filename');
-        lbl.textContent = '✓ ' + file.name;
-        lbl.style.display = 'block';
-    }
-
-    function showToast(msg, isError) {
-        const t = document.getElementById('toast');
-        t.textContent = msg;
-        isError ? t.classList.add('error') : t.classList.remove('error');
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 4000);
-    }
-
-    function submitBooking() {
-        const firstName   = document.getElementById('f-firstname').value.trim();
-        const lastName    = document.getElementById('f-lastname').value.trim();
-        const phone       = document.getElementById('f-phone').value.trim();
-        const carType     = document.getElementById('f-cartype').value;
-        const serviceType = document.getElementById('f-servicetype').value;
-        const date        = document.getElementById('f-date').value;
-        const time        = document.getElementById('f-time').value;
-        const note        = document.getElementById('f-note').value.trim();
-        const service     = document.querySelector('.service-option.active .so-name')?.textContent?.trim() || '';
-        const payment     = document.querySelector('.pay-option.active .pay-name')?.textContent?.trim() || '';
-
-        console.log('=== FORM DATA ===', { firstName, lastName, phone, carType, serviceType, date, time, service, payment });
-
-        if (!firstName || !lastName) { showToast('⚠️ შეიყვანეთ სახელი და გვარი', true); return; }
-        if (!phone)       { showToast('⚠️ შეიყვანეთ ტელეფონის ნომერი', true); return; }
-        if (!carType)     { showToast('⚠️ აირჩიეთ მანქანის ტიპი', true); return; }
-        if (!serviceType) { showToast('⚠️ აირჩიეთ სერვისის ტიპი', true); return; }
-        if (!date)        { showToast('⚠️ აირჩიეთ თარიღი', true); return; }
-        if (!time)        { showToast('⚠️ აირჩიეთ დრო', true); return; }
-
-        const btn = document.getElementById('submit-btn');
-        btn.disabled = true;
-        btn.textContent = '⏳ იგზავნება...';
-
-        const params = {
-            name:         firstName + ' ' + lastName,
-            phone:        phone,
-            service:      service,
-            car_type:     carType,
-            service_type: serviceType,
-            date:         date,
-            time:         time,
-            payment:      payment,
-            note:         note || '—'
-        };
-
-        console.log('Sending to EmailJS:', params);
-
-        emailjs.send('service_123', 'template_job8b2f', params)
-            .then((res) => {
-                console.log('SUCCESS:', res);
-                showToast('✅ თქვენი ჯავშანი წარმატებით გაიგზავნა!', false);
-                btn.disabled = false;
-                btn.textContent = 'დაჯავშნა →';
-                // ფორმის გასუფთავება
-                ['f-firstname','f-lastname','f-phone','f-note'].forEach(id => document.getElementById(id).value = '');
-                ['f-cartype','f-servicetype','f-time'].forEach(id => document.getElementById(id).selectedIndex = 0);
-                document.getElementById('f-date').value = '';
-            })
-            .catch((err) => {
-                console.error('EmailJS ERROR:', err);
-                showToast('❌ შეცდომა: ' + (err.text || err.status || JSON.stringify(err)), true);
-                btn.disabled = false;
-                btn.textContent = 'დაჯავშნა →';
-            });
-    }
+  /* ── Smooth scroll header offset ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); const top = target.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top, behavior: 'smooth' }); }
+    });
+  });
 </script>
-
 </body>
 </html>
