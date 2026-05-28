@@ -7,81 +7,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
-/* ═══════════════════════════════════════════
-   ROOT & THEME VARIABLES
-═══════════════════════════════════════════ */
 :root {
   --gold:#C9A84C;--gold-2:#E2C06A;--gold-pale:rgba(201,168,76,0.08);
   --green:#22C77A;--red:#F05252;
   --hh:64px;--r:14px;--r2:22px;--r3:32px;
 }
 
-/* DARK THEME — all blue-dark */
 [data-theme="dark"] {
   --bg:#080B18;--bg-2:#0E1228;--bg-3:#141932;--bg-4:#1A2040;
-  --bg-alt:#080B18;
   --border:rgba(201,168,76,0.18);--border-2:rgba(201,168,76,0.32);
   --muted:#7A84A8;--light:#E8EAF6;--white:#F5F7FF;
   --card-bg:#141932;--card-border:rgba(201,168,76,0.18);
   --input-bg:rgba(255,255,255,0.04);--input-border:rgba(201,168,76,0.18);
   --text-main:#F5F7FF;--text-sub:#7A84A8;
   --hdr-bg:#0E1228;--mob-nav-bg:rgba(8,11,24,0.97);
-  --footer-bg:#080B18;
-  --how-bg:#080B18;--contact-bg:#080B18;--hero-bg:#080B18;
-  --section-alt:#0E1228;
   --shadow:rgba(0,0,0,0.5);
   --toggle-track:#1A2040;--toggle-thumb:#C9A84C;
-  --services-bg:#0E1228;
-  --reviews-bg:#080B18;
-  --team-bg:#0E1228;
-  --faq-bg:#080B18;
-  --booking-bg:#0E1228;
+  --hero-bg:#080B18;--services-bg:#0E1228;--reviews-bg:#080B18;
+  --how-bg:#080B18;--team-bg:#0E1228;--faq-bg:#080B18;
+  --booking-bg:#0E1228;--contact-bg:#080B18;
 }
 
-/* LIGHT THEME */
+/* LIGHT THEME — neutral warm, NO blue background */
 [data-theme="light"] {
-  /* Blue backgrounds for most sections */
-  --bg:#1A2F6E;--bg-2:#1E3580;--bg-3:#233D93;--bg-4:#2845A8;
-  --bg-alt:#1A2F6E;
-  --border:rgba(201,168,76,0.35);--border-2:rgba(201,168,76,0.55);
-  --muted:#A8B8E8;--light:#E8EEF8;--white:#FFFFFF;
-  --card-bg:rgba(255,255,255,0.10);--card-border:rgba(255,255,255,0.2);
-  --input-bg:rgba(255,255,255,0.12);--input-border:rgba(201,168,76,0.4);
-  --text-main:#FFFFFF;--text-sub:#C8D8F0;
-  --hdr-bg:#1A2F6E;--mob-nav-bg:rgba(26,47,110,0.98);
-  --footer-bg:#0E1228;
-  --shadow:rgba(0,0,0,0.25);
-  --toggle-track:#2845A8;--toggle-thumb:#C9A84C;
-  /* White bg sections */
-  --hero-bg:#FFFFFF;
-  --how-bg:#FFFFFF;
-  --contact-bg:#FFFFFF;
-  /* Blue bg sections */
-  --services-bg:#1A2F6E;
-  --reviews-bg:#1E3580;
-  --team-bg:#1A2F6E;
-  --faq-bg:#233D93;
-  --booking-bg:#1E3580;
+  --bg:#F8F6F0;--bg-2:#FFFFFF;--bg-3:#F2EFE8;--bg-4:#EAE6DC;
+  --border:rgba(201,168,76,0.25);--border-2:rgba(201,168,76,0.5);
+  --card-bg:#FFFFFF;--card-border:rgba(201,168,76,0.2);
+  --input-bg:rgba(0,0,0,0.03);--input-border:rgba(201,168,76,0.3);
+  --text-main:#1A1810;--text-sub:#6A6050;
+  --hdr-bg:rgba(248,246,240,0.96);--mob-nav-bg:rgba(248,246,240,0.98);
+  --shadow:rgba(0,0,0,0.08);
+  --toggle-track:#E8E4D8;--toggle-thumb:#C9A84C;
+  --hero-bg:#F8F6F0;--services-bg:#FFFFFF;--reviews-bg:#F2EFE8;
+  --how-bg:#FFFFFF;--team-bg:#F2EFE8;--faq-bg:#FFFFFF;
+  --booking-bg:#F2EFE8;--contact-bg:#FFFFFF;
 }
 
-/* Light theme — white sections need dark text */
-[data-theme="light"] #hero,
-[data-theme="light"] #how,
-[data-theme="light"] #contact {
-  --text-main:#1A1F3A;
-  --text-sub:#4A5580;
-  --card-bg:#FFFFFF;
-  --card-border:rgba(201,168,76,0.25);
-  --input-bg:rgba(0,0,0,0.04);
-  --input-border:rgba(201,168,76,0.3);
-  --border:rgba(201,168,76,0.25);
-  --border-2:rgba(201,168,76,0.45);
-  --shadow:rgba(0,0,0,0.10);
-}
+[data-theme="light"] .hdr{border-bottom-color:rgba(201,168,76,0.18);box-shadow:0 1px 16px rgba(0,0,0,0.06);}
 
-/* ═══════════════════════════════════════════
-   BASE
-═══════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{font-size:16px;scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text-main);overflow-x:hidden;transition:background .3s,color .3s;}
@@ -94,111 +57,102 @@ img{display:block;max-width:100%;}
 
 .page-section{min-height:100dvh;width:100%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px 0 40px;}
 
-/* ═══════════════════════════════════════════
-   HEADER
-═══════════════════════════════════════════ */
+/* HEADER */
 .hdr{position:fixed;top:0;left:0;right:0;height:var(--hh);background:var(--hdr-bg);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.25);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:1000;transition:background .3s;}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .logo-icon{width:38px;height:38px;overflow:hidden;border-radius:10px;flex-shrink:0;}
 .logo-icon img{width:100%;height:100%;object-fit:cover;}
-.logo-text{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#FFFFFF;}
+.logo-text{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--text-main);}
+[data-theme="dark"] .logo-text{color:#FFFFFF;}
 .logo-text b{color:var(--gold);}
-
 .hdr-right{display:flex;align-items:center;gap:12px;}
 .hdr-nav{display:flex;gap:20px;align-items:center;}
-.hdr-nav a{font-size:13px;color:rgba(255,255,255,0.7);transition:color .2s;font-weight:500;}
+.hdr-nav a{font-size:13px;color:var(--text-sub);transition:color .2s;font-weight:500;}
+[data-theme="dark"] .hdr-nav a{color:rgba(255,255,255,0.7);}
 .hdr-nav a:hover{color:var(--gold);}
 .hdr-book{background:var(--gold);color:#080B18;font-family:'Syne',sans-serif;font-size:13px;font-weight:800;padding:9px 20px;border-radius:50px;transition:background .2s,transform .15s;}
 .hdr-book:hover{background:var(--gold-2);transform:translateY(-1px);}
-
 .hdr-controls{display:flex;align-items:center;gap:8px;}
 .theme-toggle{width:44px;height:24px;border-radius:50px;background:var(--toggle-track);border:1px solid rgba(201,168,76,0.3);cursor:pointer;position:relative;transition:all .3s;flex-shrink:0;}
 .theme-toggle::after{content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--toggle-thumb);transition:transform .3s;}
 [data-theme="light"] .theme-toggle::after{transform:translateX(20px);}
 .theme-toggle-wrap{display:flex;align-items:center;gap:5px;}
 .theme-icon{font-size:13px;line-height:1;}
-.lang-sw{display:flex;gap:3px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:3px;}
-.lang-btn{font-family:'Syne',sans-serif;font-size:10px;font-weight:800;padding:4px 8px;border-radius:50px;cursor:pointer;transition:all .2s;color:rgba(255,255,255,0.6);background:transparent;border:none;letter-spacing:.04em;}
+.lang-sw{display:flex;gap:3px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:50px;padding:3px;}
+.lang-btn{font-family:'Syne',sans-serif;font-size:10px;font-weight:800;padding:4px 8px;border-radius:50px;cursor:pointer;transition:all .2s;color:var(--text-sub);background:transparent;border:none;letter-spacing:.04em;}
+[data-theme="dark"] .lang-btn{color:rgba(255,255,255,0.6);}
 .lang-btn.act{background:var(--gold);color:#080B18;}
-.lang-btn:hover:not(.act){color:#FFFFFF;}
+.lang-btn:hover:not(.act){color:var(--gold);}
+[data-theme="dark"] .lang-btn:hover:not(.act){color:#FFF;}
 .hdr-menu{display:none;flex-direction:column;gap:4px;padding:6px;background:transparent;border:none;}
-.hdr-menu span{width:22px;height:1.5px;background:#FFFFFF;border-radius:2px;transition:all .3s;display:block;}
+.hdr-menu span{width:22px;height:1.5px;background:var(--text-main);border-radius:2px;transition:all .3s;display:block;}
+[data-theme="dark"] .hdr-menu span{background:#FFF;}
 .hdr-menu.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
 .hdr-menu.open span:nth-child(2){opacity:0;}
 .hdr-menu.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
 .mob-nav{display:none;position:fixed;top:var(--hh);left:0;right:0;background:var(--mob-nav-bg);backdrop-filter:blur(24px);flex-direction:column;z-index:999;border-bottom:1px solid rgba(201,168,76,0.2);padding:16px 24px 24px;}
 .mob-nav.open{display:flex;}
-.mob-nav a{padding:13px 0;font-size:16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.08);font-weight:500;}
+.mob-nav a{padding:13px 0;font-size:16px;color:var(--text-sub);border-bottom:1px solid rgba(201,168,76,0.1);font-weight:500;}
+[data-theme="dark"] .mob-nav a{color:rgba(255,255,255,0.7);border-bottom-color:rgba(255,255,255,0.08);}
 .mob-nav a:last-child{border:none;}
 .mob-nav .hdr-book{margin-top:12px;text-align:center;padding:13px;font-size:15px;display:block;}
-.mob-nav-controls{display:flex;align-items:center;justify-content:space-between;padding:10px 0 0;border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;}
+.mob-nav-controls{display:flex;align-items:center;justify-content:space-between;padding:10px 0 0;border-top:1px solid rgba(201,168,76,0.1);margin-top:4px;}
+[data-theme="dark"] .mob-nav-controls{border-top-color:rgba(255,255,255,0.08);}
 
-/* ═══════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════ */
+/* HERO */
 #hero{background:var(--hero-bg);transition:background .3s;}
-/* Dark hero always dark */
-[data-theme="dark"] #hero{background:#080B18;}
-[data-theme="light"] #hero{background:#FFFFFF;}
-
 .hero-bg{position:absolute;inset:0;pointer-events:none;}
 [data-theme="dark"] .hero-bg{background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(201,168,76,0.09) 0%,transparent 65%);}
-[data-theme="light"] .hero-bg{background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(201,168,76,0.06) 0%,transparent 65%);}
-
+[data-theme="light"] .hero-bg{background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(201,168,76,0.07) 0%,transparent 65%);}
 .hero-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.2;}
 .hero-lines::before,.hero-lines::after{content:'';position:absolute;border:1px solid var(--gold);border-radius:50%;animation:heroRotate 20s linear infinite;}
 .hero-lines::before{width:600px;height:600px;right:-200px;top:-200px;}
 .hero-lines::after{width:400px;height:400px;right:0;top:50px;animation-direction:reverse;animation-duration:14s;opacity:.5;}
 @keyframes heroRotate{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-
-[data-theme="light"] .hero-lines{opacity:.08;}
-
+[data-theme="light"] .hero-lines{opacity:.05;}
 .hero-inner{position:relative;z-index:2;padding:0 24px;display:flex;flex-direction:column;gap:28px;width:100%;}
 .hero-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);border-radius:50px;padding:6px 14px;width:fit-content;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;}
 .hero-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
-
-[data-theme="dark"] .hero-h1{color:#F5F7FF;}
-[data-theme="light"] .hero-h1{color:#1A1F3A;}
-.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5.5vw,58px);font-weight:800;line-height:1.05;}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5.5vw,58px);font-weight:800;line-height:1.05;color:var(--text-main);}
 .hero-h1 em{font-style:normal;color:var(--gold);display:block;}
-
-[data-theme="dark"] .hero-p{color:rgba(232,234,246,0.7);}
-[data-theme="light"] .hero-p{color:#4A5580;}
-.hero-p{font-size:14px;line-height:1.7;max-width:420px;margin-top:4px;}
-
+.hero-p{font-size:14px;line-height:1.7;max-width:420px;margin-top:4px;color:var(--text-sub);}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .btn-gold{background:var(--gold);color:#080B18;font-family:'Syne',sans-serif;font-size:15px;font-weight:800;padding:14px 28px;border-radius:50px;transition:background .2s,transform .15s,box-shadow .2s;}
 .btn-gold:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.3);}
-
-[data-theme="dark"] .btn-line{border:1px solid rgba(201,168,76,0.4);color:rgba(232,234,246,0.7);}
-[data-theme="light"] .btn-line{border:1px solid rgba(26,31,58,0.3);color:#4A5580;}
-.btn-line{background:transparent;font-size:14px;font-weight:600;padding:13px 22px;border-radius:50px;transition:all .2s;}
+.btn-line{background:transparent;font-size:14px;font-weight:600;padding:13px 22px;border-radius:50px;transition:all .2s;border:1px solid rgba(201,168,76,0.35);color:var(--text-sub);}
+[data-theme="dark"] .btn-line{color:rgba(232,234,246,0.7);}
 .btn-line:hover{border-color:var(--gold);color:var(--gold);}
 
-.hero-img-wrap{position:relative;border-radius:var(--r2);overflow:hidden;border:1px solid rgba(201,168,76,0.2);}
-.hero-img-main{width:100%;height:clamp(320px,50vh,560px);object-fit:cover;display:block;}
-.hero-img-placeholder{width:100%;height:clamp(320px,50vh,560px);background:linear-gradient(135deg,#0E1228 0%,#1A2040 50%,#141932 100%);display:flex;align-items:center;justify-content:center;font-size:80px;}
-.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,24,.5) 0%,transparent 50%);}
-.hero-status{position:absolute;top:14px;right:14px;display:flex;align-items:center;gap:6px;background:rgba(8,11,24,.75);backdrop-filter:blur(12px);border-radius:50px;padding:7px 14px;border:1px solid rgba(34,199,122,.3);}
-.status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
-.status-text{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--green);}
-.hero-badge{position:absolute;bottom:14px;left:14px;background:rgba(8,11,24,.82);backdrop-filter:blur(12px);border:1px solid rgba(201,168,76,0.25);border-radius:var(--r);padding:12px 16px;display:flex;align-items:center;gap:10px;}
+/* Premium badge (replaces stats) */
+.hero-badge-standalone{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(201,168,76,0.08);
+  border:1px solid rgba(201,168,76,0.25);
+  border-radius:var(--r);padding:12px 16px;
+  margin-top:4px;width:fit-content;
+}
+[data-theme="dark"] .hero-badge-standalone{background:rgba(14,18,40,0.6);}
 .badge-icon{width:36px;height:36px;border-radius:8px;overflow:hidden;flex-shrink:0;}
 .badge-icon img{width:100%;height:100%;object-fit:cover;}
 .badge-icon-emoji{font-size:22px;}
-.badge-txt-top{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:#F5F7FF;}
-.badge-txt-bot{font-size:11px;color:rgba(122,132,168,0.9);margin-top:1px;}
+.badge-txt-top{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--text-main);}
+[data-theme="dark"] .badge-txt-top{color:#F5F7FF;}
+.badge-txt-bot{font-size:11px;color:var(--text-sub);margin-top:1px;}
 
-[data-theme="dark"] .hero-stats{background:rgba(14,18,40,0.6);}
-[data-theme="light"] .hero-stats{background:rgba(255,255,255,0.8);}
-.hero-stats{display:flex;border:1px solid rgba(201,168,76,0.2);border-radius:var(--r2);overflow:hidden;backdrop-filter:blur(12px);}
-.stat-item{flex:1;padding:16px 12px;text-align:center;border-right:1px solid rgba(201,168,76,0.15);}
-.stat-item:last-child{border-right:none;}
-.stat-n{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--gold);}
-[data-theme="dark"] .stat-l{color:rgba(122,132,168,0.9);}
-[data-theme="light"] .stat-l{color:#4A5580;}
-.stat-l{font-size:11px;margin-top:3px;line-height:1.35;}
+/* Hero image with hover zoom */
+.hero-img-wrap{position:relative;border-radius:var(--r2);overflow:hidden;border:1px solid rgba(201,168,76,0.2);}
+.hero-img-inner{overflow:hidden;border-radius:var(--r2);}
+.hero-img-main{
+  width:100%;height:clamp(320px,50vh,560px);object-fit:cover;display:block;
+  transition:transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.hero-img-wrap:hover .hero-img-main{transform:scale(1.06);}
+.hero-img-placeholder{width:100%;height:clamp(320px,50vh,560px);background:linear-gradient(135deg,#0E1228 0%,#1A2040 50%,#141932 100%);display:flex;align-items:center;justify-content:center;font-size:80px;}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,24,.5) 0%,transparent 50%);pointer-events:none;}
+.hero-status{position:absolute;top:14px;right:14px;display:flex;align-items:center;gap:6px;background:rgba(8,11,24,.75);backdrop-filter:blur(12px);border-radius:50px;padding:7px 14px;border:1px solid rgba(34,199,122,.3);}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+.status-text{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--green);}
 
 @media(min-width:768px){
   .hero-inner{flex-direction:row;align-items:center;padding:0 48px;max-width:1200px;margin:0 auto;gap:48px;}
@@ -207,29 +161,15 @@ img{display:block;max-width:100%;}
   .hero-img-main{height:clamp(400px,55vh,600px);}
 }
 
-/* ═══════════════════════════════════════════
-   SHARED
-═══════════════════════════════════════════ */
+/* SHARED */
 .sec-inner{padding:0 24px;width:100%;}
 @media(min-width:768px){.sec-inner{padding:0 48px;max-width:1200px;margin:0 auto;}}
 .sec-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
 .sec-h2{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:800;color:var(--text-main);line-height:1.1;margin-bottom:8px;transition:color .3s;}
 .sec-sub{font-size:14px;color:var(--text-sub);line-height:1.7;max-width:480px;transition:color .3s;}
 
-/* ═══════════════════════════════════════════
-   SERVICES — blue in light mode
-═══════════════════════════════════════════ */
+/* SERVICES */
 #services{background:var(--services-bg);transition:background .3s;}
-[data-theme="light"] #services .sec-h2{color:#FFFFFF;}
-[data-theme="light"] #services .sec-sub{color:rgba(255,255,255,0.75);}
-[data-theme="light"] #services .svc-name{color:#FFFFFF;}
-[data-theme="light"] #services .svc-desc{color:rgba(255,255,255,0.7);}
-[data-theme="light"] #services .svc-list li{color:rgba(255,255,255,0.7);}
-[data-theme="light"] #services .svc-ps{color:rgba(255,255,255,0.6);}
-[data-theme="light"] #services .svc-time{color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2);}
-[data-theme="light"] #services .premium-note p{color:rgba(255,255,255,0.7);}
-[data-theme="light"] #services .card-bg-light{background:rgba(255,255,255,0.08);}
-
 .cards-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px;}
 @media(min-width:640px){.cards-grid{grid-template-columns:repeat(3,1fr);}}
 .svc-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r2);padding:20px 18px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s,background .3s;display:flex;flex-direction:column;}
@@ -239,7 +179,9 @@ img{display:block;max-width:100%;}
 .svc-card.featured{border-color:rgba(201,168,76,.45);}
 .svc-card.featured::before{opacity:1;}
 .pop-tag{position:absolute;top:14px;right:14px;background:var(--gold);color:#080B18;font-family:'Syne',sans-serif;font-size:10px;font-weight:800;padding:3px 10px;border-radius:50px;}
-.svc-icon-wrap{width:42px;height:42px;background:rgba(201,168,76,.1);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:14px;}
+/* SVG icons for services */
+.svc-icon-wrap{width:44px;height:44px;background:rgba(201,168,76,.1);border-radius:var(--r);display:flex;align-items:center;justify-content:center;margin-bottom:14px;border:1px solid rgba(201,168,76,0.2);}
+.svc-icon-wrap svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 .svc-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--text-main);margin-bottom:5px;}
 .svc-desc{font-size:12px;color:var(--text-sub);line-height:1.6;margin-bottom:14px;}
 .svc-list{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1;margin-bottom:18px;}
@@ -253,23 +195,12 @@ img{display:block;max-width:100%;}
 .premium-note h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--gold);margin-bottom:5px;}
 .premium-note p{font-size:12px;color:var(--text-sub);line-height:1.6;}
 
-/* ═══════════════════════════════════════════
-   REVIEWS — blue in light
-═══════════════════════════════════════════ */
+/* REVIEWS */
 #reviews{background:var(--reviews-bg);transition:background .3s;}
-[data-theme="light"] #reviews .sec-h2{color:#FFFFFF;}
-[data-theme="light"] #reviews .rev-name{color:#FFFFFF;}
-[data-theme="light"] #reviews .rev-txt{color:rgba(255,255,255,0.75);}
-[data-theme="light"] #reviews .rev-cnt{color:rgba(255,255,255,0.6);}
-[data-theme="light"] #reviews .rev-date{color:rgba(255,255,255,0.4);}
-[data-theme="light"] #reviews .rev-card{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);}
-[data-theme="light"] #reviews .google-pill{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);}
-
 .reviews-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px;}
 .rev-score{display:flex;flex-direction:column;}
 .rev-big{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:var(--gold);line-height:1;}
 .rev-stars{color:var(--gold);font-size:16px;letter-spacing:2px;margin-top:4px;}
-.rev-cnt{font-size:12px;color:var(--text-sub);margin-top:4px;}
 .rev-grid{display:grid;grid-template-columns:1fr;gap:12px;}
 @media(min-width:640px){.rev-grid{grid-template-columns:repeat(3,1fr);}}
 .rev-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r2);padding:20px 18px;transition:transform .3s,border-color .3s,background .3s;}
@@ -281,44 +212,28 @@ img{display:block;max-width:100%;}
 .rev-stars-sm{color:var(--gold);font-size:12px;letter-spacing:1px;flex-shrink:0;}
 .rev-txt{font-size:13px;color:var(--text-sub);line-height:1.7;}
 .rev-date{font-size:11px;color:var(--text-sub);opacity:.5;margin-top:8px;}
-.google-pill{display:inline-flex;align-items:center;gap:8px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:50px;padding:8px 16px;font-size:12px;color:var(--text-sub);margin:20px auto 0;width:fit-content;}
 
-/* ═══════════════════════════════════════════
-   HOW — white in light
-═══════════════════════════════════════════ */
+/* HOW */
 #how{background:var(--how-bg);transition:background .3s;}
-[data-theme="light"] #how .sec-h2{color:#1A1F3A;}
-[data-theme="light"] #how .sec-sub{color:#4A5580;}
-[data-theme="light"] #how .step-txt{color:#4A5580;}
-[data-theme="light"] #how .how-col-head{color:var(--gold);}
-[data-theme="light"] #how .step-box{background:#FFFFFF;border-color:rgba(201,168,76,0.2);box-shadow:0 2px 8px rgba(0,0,0,0.05);}
-
 .how-cols{display:grid;grid-template-columns:1fr;gap:28px;margin-top:20px;}
-@media(min-width:640px){.how-cols{grid-template-columns:1fr 1fr;gap:24px;}}
-.how-col-head{background:rgba(201,168,76,.07);border:1px solid var(--border);border-radius:50px;padding:10px 18px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--gold);display:inline-flex;align-items:center;gap:6px;margin-bottom:18px;}
-.step-row{display:flex;gap:14px;margin-bottom:4px;}
-.step-n{width:32px;height:32px;border-radius:50%;background:var(--gold);color:#080B18;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-.step-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:12px 15px;flex:1;transition:background .3s;}
-.step-txt{font-size:13px;color:var(--text-sub);line-height:1.5;}
-.step-line{width:32px;display:flex;justify-content:center;padding:3px 0;}
+@media(min-width:640px){.how-cols{grid-template-columns:1fr 1fr;gap:32px;}}
+.how-col-head{background:rgba(201,168,76,.07);border:1px solid var(--border);border-radius:50px;padding:11px 20px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--gold);display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;}
+.step-row{display:flex;gap:16px;margin-bottom:4px;}
+.step-n{width:40px;height:40px;border-radius:50%;background:var(--gold);color:#080B18;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:18px 20px;flex:1;transition:background .3s,border-color .3s;}
+.step-box:hover{border-color:var(--border-2);}
+.step-txt{font-size:14px;color:var(--text-sub);line-height:1.7;font-weight:500;}
+.step-line{width:40px;display:flex;justify-content:center;padding:4px 0;}
 .step-line-bar{width:1.5px;flex:1;background:linear-gradient(to bottom,var(--gold),transparent);}
 
-/* ═══════════════════════════════════════════
-   TEAM — blue in light
-═══════════════════════════════════════════ */
+/* TEAM */
 #team{background:var(--team-bg);transition:background .3s;}
-[data-theme="light"] #team .sec-h2{color:#FFFFFF;}
-[data-theme="light"] #team .sec-sub{color:rgba(255,255,255,0.75);}
-[data-theme="light"] #team .tm-name{color:#FFFFFF;}
-[data-theme="light"] #team .tm-desc{color:rgba(255,255,255,0.7);}
-[data-theme="light"] #team .tm-card{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);}
-[data-theme="light"] #team .tm-photo{background:rgba(255,255,255,0.05);}
-
 .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px;}
 @media(min-width:640px){.team-grid{grid-template-columns:repeat(4,1fr);}}
 .tm-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r2);overflow:hidden;transition:transform .3s,border-color .3s,background .3s;}
 .tm-card:hover{transform:translateY(-5px);border-color:var(--border-2);box-shadow:0 16px 40px var(--shadow);}
 .tm-photo{height:140px;background:linear-gradient(135deg,var(--bg-3),var(--bg-2));display:flex;align-items:center;justify-content:center;position:relative;}
+[data-theme="dark"] .tm-photo{background:linear-gradient(135deg,#141932,#0E1228);}
 .tm-init{width:62px;height:62px;border-radius:50%;background:rgba(201,168,76,.1);border:1.5px solid var(--border-2);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--gold);}
 .tm-pill{position:absolute;bottom:8px;right:8px;background:var(--gold);color:#080B18;font-family:'Syne',sans-serif;font-size:9px;font-weight:800;padding:3px 8px;border-radius:50px;}
 .tm-body{padding:14px;}
@@ -327,15 +242,8 @@ img{display:block;max-width:100%;}
 .tm-desc{font-size:11px;color:var(--text-sub);line-height:1.55;margin-bottom:8px;}
 .tm-exp{background:rgba(201,168,76,.08);border-radius:50px;padding:3px 10px;font-size:10px;color:var(--gold);font-family:'Syne',sans-serif;font-weight:700;display:inline-block;}
 
-/* ═══════════════════════════════════════════
-   FAQ — blue in light
-═══════════════════════════════════════════ */
+/* FAQ */
 #faq{background:var(--faq-bg);transition:background .3s;}
-[data-theme="light"] #faq .sec-h2{color:#FFFFFF;}
-[data-theme="light"] #faq .faq-q-t{color:#FFFFFF;}
-[data-theme="light"] #faq .faq-a{color:rgba(255,255,255,0.75);}
-[data-theme="light"] #faq .faq-item{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);}
-
 .faq-list{display:flex;flex-direction:column;gap:8px;margin-top:20px;max-width:680px;}
 .faq-item{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);overflow:hidden;transition:background .3s,border-color .3s;}
 .faq-q{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;cursor:pointer;gap:14px;}
@@ -345,26 +253,8 @@ img{display:block;max-width:100%;}
 .faq-a{font-size:13px;color:var(--text-sub);line-height:1.75;padding:0 18px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
 .faq-item.open .faq-a{max-height:200px;padding:0 18px 15px;}
 
-/* ═══════════════════════════════════════════
-   CONTACT — white in light
-═══════════════════════════════════════════ */
+/* CONTACT */
 #contact{background:var(--contact-bg);transition:background .3s;}
-[data-theme="light"] #contact .sec-h2{color:#1A1F3A;}
-[data-theme="light"] #contact .sec-sub{color:#4A5580;}
-[data-theme="light"] #contact .cnt-val{color:#1A1F3A;}
-[data-theme="light"] #contact .cnt-sub{color:#4A5580;}
-[data-theme="light"] #contact .cnt-lbl{color:var(--gold);}
-[data-theme="light"] #contact .cnt-card{background:#FFFFFF;border-color:rgba(201,168,76,0.2);}
-[data-theme="light"] #contact .soc-btn{background:#FFFFFF;border-color:rgba(201,168,76,0.2);}
-[data-theme="light"] #contact .soc-name{color:#1A1F3A;}
-[data-theme="light"] #contact .soc-h{color:#4A5580;}
-[data-theme="light"] #contact .hours-box{background:#FFFFFF;border-color:rgba(201,168,76,0.2);}
-[data-theme="light"] #contact .hours-title{color:#1A1F3A;}
-[data-theme="light"] #contact .hours-day{color:#4A5580;}
-[data-theme="light"] #contact .hours-time{color:#1A1F3A;}
-[data-theme="light"] #contact .hours-row{border-color:rgba(0,0,0,0.07);}
-[data-theme="light"] #contact .cnt-icon{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.25);}
-
 .contact-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px;}
 @media(min-width:640px){.contact-grid{grid-template-columns:1fr 1fr;}}
 .cnt-left{display:flex;flex-direction:column;gap:10px;}
@@ -393,29 +283,9 @@ img{display:block;max-width:100%;}
 .map-box{border-radius:var(--r2);overflow:hidden;border:1px solid var(--card-border);min-height:260px;}
 .map-box iframe{width:100%;height:100%;min-height:260px;border:none;display:block;}
 
-/* ═══════════════════════════════════════════
-   BOOKING — blue in light
-═══════════════════════════════════════════ */
+/* BOOKING */
 #booking{background:var(--booking-bg);transition:background .3s;}
-[data-theme="light"] #booking .sec-h2{color:#FFFFFF;}
-[data-theme="light"] #booking .sec-sub{color:rgba(255,255,255,0.75);}
-[data-theme="light"] #booking .booking-form{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);}
-[data-theme="light"] #booking .f-input,[data-theme="light"] #booking .f-select,[data-theme="light"] #booking .f-textarea{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.25);color:#FFFFFF;}
-[data-theme="light"] #booking .f-label{color:var(--gold);}
-[data-theme="light"] #booking .f-input::placeholder,[data-theme="light"] #booking .f-textarea::placeholder{color:rgba(255,255,255,0.4);}
-[data-theme="light"] #booking .svc-opt{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);}
-[data-theme="light"] #booking .svc-opt.act{background:rgba(201,168,76,0.2);border-color:var(--gold);}
-[data-theme="light"] #booking .so-n{color:#FFFFFF;}
-[data-theme="light"] #booking .pay-opt{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);}
-[data-theme="light"] #booking .pay-opt.act{background:rgba(201,168,76,0.2);border-color:var(--gold);}
-[data-theme="light"] #booking .pay-nm{color:#FFFFFF;}
-[data-theme="light"] #booking .pay-ds{color:rgba(255,255,255,0.6);}
-[data-theme="light"] #booking .f-div{border-color:rgba(255,255,255,0.15);}
-[data-theme="light"] #booking .up-area{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);}
-[data-theme="light"] #booking .up-t{color:#FFFFFF;}
-[data-theme="light"] #booking .up-s{color:rgba(255,255,255,0.6);}
-
-.booking-form{background:var(--bg);border:1px solid var(--card-border);border-radius:var(--r3);padding:26px 22px;max-width:660px;margin:20px auto 0;transition:background .3s,border-color .3s;}
+.booking-form{background:var(--bg-2);border:1px solid var(--card-border);border-radius:var(--r3);padding:26px 22px;max-width:660px;margin:20px auto 0;transition:background .3s,border-color .3s;}
 @media(min-width:640px){.booking-form{padding:34px 42px;}}
 .f-label{display:block;font-size:10px;font-weight:800;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;font-family:'Syne',sans-serif;}
 .f-input,.f-select,.f-textarea{width:100%;background:var(--input-bg);border:1px solid var(--input-border);border-radius:var(--r);padding:11px 14px;color:var(--text-main);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .25s,background .2s,color .3s;}
@@ -466,9 +336,7 @@ img{display:block;max-width:100%;}
 .submit-btn:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.3);}
 .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none;}
 
-/* ═══════════════════════════════════════════
-   SUCCESS MODAL
-═══════════════════════════════════════════ */
+/* MODAL */
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
 .modal-backdrop.open{opacity:1;pointer-events:all;}
 .modal-box{background:var(--bg-2);border:1px solid var(--card-border);border-radius:var(--r3);padding:36px 32px;max-width:420px;width:100%;text-align:center;transform:scale(0.9) translateY(20px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);position:relative;}
@@ -484,34 +352,29 @@ img{display:block;max-width:100%;}
 .modal-row-val{color:var(--text-main);font-weight:600;font-family:'Syne',sans-serif;}
 .modal-wa{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);border-radius:var(--r);padding:12px;color:#22C77A;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;text-decoration:none;}
 
-/* ═══════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════ */
+/* FOOTER */
 footer{background:#0E1228;border-top:1px solid rgba(201,168,76,0.18);padding:36px 24px 28px;}
-footer .logo-text{color:#F5F7FF;}
+footer .logo-text{color:#F5F7FF !important;}
 footer .ft-copy,footer .ft-brand p,footer .ft-col span,footer .ft-col a{color:rgba(200,205,230,0.6);}
 footer .ft-col h4{color:#F5F7FF;}
 footer .ft-col a:hover{color:var(--gold);}
-footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
 .ft-inner{max-width:1200px;margin:0 auto;}
 .ft-top{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:28px;}
 @media(min-width:640px){.ft-top{grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;}}
-.ft-brand p{font-size:13px;color:rgba(200,205,230,0.6);line-height:1.75;margin-top:10px;max-width:260px;}
-.ft-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;color:#F5F7FF;margin-bottom:12px;letter-spacing:.08em;text-transform:uppercase;}
-.ft-col a,.ft-col span{display:block;font-size:13px;color:rgba(200,205,230,0.6);margin-bottom:8px;transition:color .2s;}
-.ft-col a:hover{color:var(--gold);}
+.ft-brand p{font-size:13px;line-height:1.75;margin-top:10px;max-width:260px;}
+.ft-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;margin-bottom:12px;letter-spacing:.08em;text-transform:uppercase;}
+.ft-col a,.ft-col span{display:block;font-size:13px;margin-bottom:8px;transition:color .2s;}
 .ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
 .ft-copy{font-size:12px;color:rgba(200,205,230,0.4);}
 .ft-made{font-size:12px;color:rgba(200,205,230,0.4);}
 .ft-made span{color:var(--gold);}
 
-/* ═══════════════════════════════════════════
-   MOBILE BOTTOM NAV
-═══════════════════════════════════════════ */
+/* MOB BOTTOM NAV */
 .mob-bot{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--hdr-bg);backdrop-filter:blur(20px);border-top:1px solid rgba(201,168,76,0.2);padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:1000;justify-content:space-around;}
 .mbn-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 12px;text-decoration:none;transition:all .2s;}
 .mbn-ico{font-size:20px;}
-.mbn-lbl{font-size:9px;font-weight:700;color:rgba(255,255,255,0.5);font-family:'Syne',sans-serif;letter-spacing:.05em;text-transform:uppercase;transition:color .2s;}
+.mbn-lbl{font-size:9px;font-weight:700;color:var(--text-sub);font-family:'Syne',sans-serif;letter-spacing:.05em;text-transform:uppercase;transition:color .2s;}
+[data-theme="dark"] .mbn-lbl{color:rgba(255,255,255,0.5);}
 .mbn-item.act .mbn-lbl,.mbn-item:hover .mbn-lbl{color:var(--gold);}
 .mbn-book{background:var(--gold);border-radius:50px;margin-top:-10px;padding:9px 16px !important;}
 .mbn-book .mbn-lbl{color:#080B18 !important;}
@@ -532,6 +395,9 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
   .pay-sel{grid-template-columns:1fr;}
   .lang-sw{display:none;}
   .theme-toggle-wrap .theme-icon{display:none;}
+  .step-box{padding:16px 18px;}
+  .step-txt{font-size:14px;}
+  .hero-img-main{height:clamp(260px,45vw,400px);}
 }
 
 .flatpickr-input{background:var(--input-bg) !important;border:1px solid var(--input-border) !important;color:var(--text-main) !important;border-radius:var(--r) !important;padding:11px 14px !important;font-family:'Inter',sans-serif !important;font-size:14px !important;width:100% !important;}
@@ -539,7 +405,6 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="hdr">
   <a href="#hero" class="logo">
     <div class="logo-icon"><img src="carwash_logo.png" alt="CarWash Logo" onerror="this.parentElement.innerHTML='CW';this.parentElement.style.cssText='width:38px;height:38px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:Syne,sans-serif;font-size:13px;font-weight:800;color:#080B18;'"></div>
@@ -610,27 +475,25 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
         <a href="#booking" class="btn-gold" data-i18n="hero.cta1">ახლავე დაჯავშნა →</a>
         <a href="#services" class="btn-line" data-i18n="hero.cta2">სერვისები</a>
       </div>
-      <div class="hero-stats" style="margin-top:18px;">
-        <div class="stat-item"><div class="stat-n">1,200+</div><div class="stat-l" data-i18n="hero.stat1">კმაყოფილი კლიენტი</div></div>
-        <div class="stat-item"><div class="stat-n">4.9★</div><div class="stat-l" data-i18n="hero.stat2">Google შეფასება</div></div>
-        <div class="stat-item"><div class="stat-n">3+</div><div class="stat-l" data-i18n="hero.stat3">წელი ბაზარზე</div></div>
+      <!-- Premium badge instead of fake stats -->
+      <div class="hero-badge-standalone">
+        <div class="badge-icon"><img src="carwash_logo.png" alt="logo" onerror="this.parentElement.innerHTML='<span class=badge-icon-emoji>🏆</span>'"></div>
+        <div>
+          <div class="badge-txt-top">Premium Quality</div>
+          <div class="badge-txt-bot" data-i18n="hero.cert">სერტიფიცირებული</div>
+        </div>
       </div>
     </div>
     <div class="hero-right">
       <div class="hero-img-wrap">
-        <img src="carwash.jpg" alt="CarWash Tbilisi" class="hero-img-main" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="hero-img-placeholder" style="display:none;">🚗</div>
+        <div class="hero-img-inner">
+          <img src="carwash.jpg" alt="CarWash Tbilisi" class="hero-img-main" onerror="this.style.display='none';document.getElementById('hero-ph').style.display='flex'">
+          <div class="hero-img-placeholder" id="hero-ph" style="display:none;">🚗</div>
+        </div>
         <div class="hero-img-overlay"></div>
         <div class="hero-status">
           <div class="status-dot" id="sdot"></div>
           <span class="status-text" id="stxt" data-i18n="hero.open">ახლა ღიაა</span>
-        </div>
-        <div class="hero-badge">
-          <div class="badge-icon"><img src="carwash_logo.png" alt="logo" onerror="this.parentElement.innerHTML='<span class=badge-icon-emoji>🏆</span>'"></div>
-          <div>
-            <div class="badge-txt-top">Premium Quality</div>
-            <div class="badge-txt-bot" data-i18n="hero.cert">სერტიფიცირებული</div>
-          </div>
         </div>
       </div>
     </div>
@@ -645,7 +508,10 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
     <p class="sec-sub" data-i18n="sec.servicesSub">სამი პაკეტი ყველა მოთხოვნისთვის. სწრაფი ჯავშანი, ზუსტი დრო.</p>
     <div class="cards-grid">
       <article class="svc-card">
-        <div class="svc-icon-wrap">💧</div>
+        <div class="svc-icon-wrap">
+          <!-- Water drop SVG -->
+          <svg viewBox="0 0 24 24"><path d="M12 2C8 8 5 12 5 15.5a7 7 0 0014 0C19 12 16 8 12 2z"/></svg>
+        </div>
         <h3 class="svc-name">Express</h3>
         <p class="svc-desc" data-i18n="svc.expDesc">სწრაფი გარეთა რეცხვა ყოველდღიური გამოყენებისთვის.</p>
         <ul class="svc-list">
@@ -661,7 +527,10 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
       </article>
       <article class="svc-card featured">
         <div class="pop-tag" data-i18n="svc.popular">★ პოპულარული</div>
-        <div class="svc-icon-wrap">✨</div>
+        <div class="svc-icon-wrap">
+          <!-- Star SVG -->
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
         <h3 class="svc-name">Premium</h3>
         <p class="svc-desc" data-i18n="svc.premDesc">სრული გარე და შიდა მომსახურება — ყოვლისმომცველი პაკეტი.</p>
         <ul class="svc-list">
@@ -677,7 +546,10 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
         </div>
       </article>
       <article class="svc-card">
-        <div class="svc-icon-wrap">🏆</div>
+        <div class="svc-icon-wrap">
+          <!-- Shield SVG -->
+          <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z"/></svg>
+        </div>
         <h3 class="svc-name">Detailing</h3>
         <p class="svc-desc" data-i18n="svc.detDesc">პროფესიონალური ავტოდეტეილინგი — ლუქის სრული აღდგენა.</p>
         <ul class="svc-list">
@@ -712,7 +584,6 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
       <div class="rev-score">
         <div class="rev-big">4.9</div>
         <div class="rev-stars">★★★★★</div>
-        <div class="rev-cnt" data-i18n="rev.count">150+ შეფასება</div>
       </div>
     </div>
     <div class="rev-grid">
@@ -749,9 +620,6 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
         <p class="rev-txt" data-i18n="rev.t3">Express-ი 20 წუთში მართლა მზადაა! ყოველ კვირა ვსარგებლობ, ფასი-ხარისხი იდეალურია.</p>
         <div class="rev-date" data-i18n="rev.d3">3 კვირის წინ</div>
       </article>
-    </div>
-    <div style="text-align:center;">
-      <div class="google-pill">⭐ Google Reviews · 4.9 · 150+ <span data-i18n="rev.reviews">შეფასება</span></div>
     </div>
   </div>
 </section>
@@ -790,42 +658,10 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
     <h2 class="sec-h2" data-i18n="sec.teamH2">ჩვენი თანამშრომლები</h2>
     <p class="sec-sub" data-i18n="sec.teamSub">პროფესიონალები, რომლებიც ზრუნავენ შენს მანქანაზე</p>
     <div class="team-grid">
-      <article class="tm-card">
-        <div class="tm-photo"><div class="tm-init">გ</div><div class="tm-pill">⭐ მთავარი</div></div>
-        <div class="tm-body">
-          <div class="tm-name" data-i18n="team.n1">გიორგი მამულაშვილი</div>
-          <div class="tm-role" data-i18n="team.r1">🔧 მთავარი დეტეილერი</div>
-          <div class="tm-desc" data-i18n="team.d1">8 წლის გამოცდილება. სპეც. კერამიკასა და პოლიშინგში.</div>
-          <div class="tm-exp" data-i18n="team.e1">8 წელი</div>
-        </div>
-      </article>
-      <article class="tm-card">
-        <div class="tm-photo"><div class="tm-init">ნ</div><div class="tm-pill">💎 Premium</div></div>
-        <div class="tm-body">
-          <div class="tm-name" data-i18n="team.n2">ნინო კვარაცხელია</div>
-          <div class="tm-role" data-i18n="team.r2">✨ სალონის სპეც.</div>
-          <div class="tm-desc" data-i18n="team.d2">5 წელი. ტყავის კონდ. და სალონის სრული აღდგენა.</div>
-          <div class="tm-exp" data-i18n="team.e2">5 წელი</div>
-        </div>
-      </article>
-      <article class="tm-card">
-        <div class="tm-photo"><div class="tm-init">დ</div><div class="tm-pill">🚀 Express</div></div>
-        <div class="tm-body">
-          <div class="tm-name" data-i18n="team.n3">დავით ბერიძე</div>
-          <div class="tm-role" data-i18n="team.r3">💧 Express სპეც.</div>
-          <div class="tm-desc" data-i18n="team.d3">სწრაფი გარე რეცხვის ოსტატი. 200+ კლიენტი/თვეში.</div>
-          <div class="tm-exp" data-i18n="team.e3">200+ / თვეში</div>
-        </div>
-      </article>
-      <article class="tm-card">
-        <div class="tm-photo"><div class="tm-init">ლ</div><div class="tm-pill">🏆 Detailing</div></div>
-        <div class="tm-body">
-          <div class="tm-name" data-i18n="team.n4">ლაშა გელაშვილი</div>
-          <div class="tm-role" data-i18n="team.r4">🏆 ლაქის სპეც.</div>
-          <div class="tm-desc" data-i18n="team.d4">6 წელი პრემიუმ ავტომობილებზე. ლაქის აღდგენის ექსპ.</div>
-          <div class="tm-exp" data-i18n="team.e4">6 წელი</div>
-        </div>
-      </article>
+      <article class="tm-card"><div class="tm-photo"><div class="tm-init">გ</div><div class="tm-pill">⭐ მთავარი</div></div><div class="tm-body"><div class="tm-name" data-i18n="team.n1">გიორგი მამულაშვილი</div><div class="tm-role" data-i18n="team.r1">🔧 მთავარი დეტეილერი</div><div class="tm-desc" data-i18n="team.d1">8 წლის გამოცდილება. სპეც. კერამიკასა და პოლიშინგში.</div><div class="tm-exp" data-i18n="team.e1">8 წელი</div></div></article>
+      <article class="tm-card"><div class="tm-photo"><div class="tm-init">ნ</div><div class="tm-pill">💎 Premium</div></div><div class="tm-body"><div class="tm-name" data-i18n="team.n2">ნინო კვარაცხელია</div><div class="tm-role" data-i18n="team.r2">✨ სალონის სპეც.</div><div class="tm-desc" data-i18n="team.d2">5 წელი. ტყავის კონდ. და სალონის სრული აღდგენა.</div><div class="tm-exp" data-i18n="team.e2">5 წელი</div></div></article>
+      <article class="tm-card"><div class="tm-photo"><div class="tm-init">დ</div><div class="tm-pill">🚀 Express</div></div><div class="tm-body"><div class="tm-name" data-i18n="team.n3">დავით ბერიძე</div><div class="tm-role" data-i18n="team.r3">💧 Express სპეც.</div><div class="tm-desc" data-i18n="team.d3">სწრაფი გარე რეცხვის ოსტატი. 200+ კლიენტი/თვეში.</div><div class="tm-exp" data-i18n="team.e3">200+ / თვეში</div></div></article>
+      <article class="tm-card"><div class="tm-photo"><div class="tm-init">ლ</div><div class="tm-pill">🏆 Detailing</div></div><div class="tm-body"><div class="tm-name" data-i18n="team.n4">ლაშა გელაშვილი</div><div class="tm-role" data-i18n="team.r4">🏆 ლაქის სპეც.</div><div class="tm-desc" data-i18n="team.d4">6 წელი პრემიუმ ავტომობილებზე. ლაქის აღდგენის ექსპ.</div><div class="tm-exp" data-i18n="team.e4">6 წელი</div></div></article>
     </div>
   </div>
 </section>
@@ -836,36 +672,11 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
     <div class="sec-label">FAQ</div>
     <h2 class="sec-h2" data-i18n="faq.h2">ხშირად დასმული კითხვები</h2>
     <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0">
-          <span class="faq-q-t" data-i18n="faq.q1">მძღოლის გამოძახება — სად მიდის მანქანა?</span><span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a" data-i18n="faq.a1">ჩვენი სერტიფიცირებული მძღოლი მოგაკითხავთ, მანქანას სამრეცხაოში — ყაზბეგის გამზ. 12 — გადაიყვანს, სერვისის შემდეგ კი უკან დაგიბრუნებთ. GPS ტრეკინგი ხელმისაწვდომია მოთხოვნით.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0">
-          <span class="faq-q-t" data-i18n="faq.q2">ონლაინ გადახდა — ქვითარი სჭირდება?</span><span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a" data-i18n="faq.a2">ბარათით გადახდისას საჭიროა ქვითრის ატვირთვა. ქეში გადახდისას ადგილზე გადაიხდით — ქვითარი არ სჭირდება.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0">
-          <span class="faq-q-t" data-i18n="faq.q3">შემიძლია ჯავშანი გავაუქმო ან გადავავადო?</span><span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a" data-i18n="faq.a3">კი — გამოძახებამდე 2 საათით ადრე. დაგვიკავშირდით ტელეფონით ან WhatsApp-ით.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0">
-          <span class="faq-q-t" data-i18n="faq.q4">ყველა ტიპის მანქანაზე მუშაობთ?</span><span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a" data-i18n="faq.a4">დიახ — სედანი, SUV, ჰეჩბექი, უნივერსალი, მინივენი, პიკაპი, კუპე. დიდი ავტომობილების შემთხვევაში წინასწარ გაგვიკავშირდით.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0">
-          <span class="faq-q-t" data-i18n="faq.q5">Detailing-ის ფოტო-ანგარიში რა მოიცავს?</span><span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a" data-i18n="faq.a5">20+ ფოტო — კუზოვი, სალონი, დისკები, სარკეები — სანამ და შემდეგ. WhatsApp-ით გეგზავნებათ 30 წუთში.</div>
-      </div>
+      <div class="faq-item"><div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0"><span class="faq-q-t" data-i18n="faq.q1">მძღოლის გამოძახება — სად მიდის მანქანა?</span><span class="faq-plus">+</span></div><div class="faq-a" data-i18n="faq.a1">ჩვენი სერტიფიცირებული მძღოლი მოგაკითხავთ, მანქანას სამრეცხაოში — ყაზბეგის გამზ. 12 — გადაიყვანს, სერვისის შემდეგ კი უკან დაგიბრუნებთ. GPS ტრეკინგი ხელმისაწვდომია მოთხოვნით.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0"><span class="faq-q-t" data-i18n="faq.q2">ონლაინ გადახდა — ქვითარი სჭირდება?</span><span class="faq-plus">+</span></div><div class="faq-a" data-i18n="faq.a2">ბარათით გადახდისას საჭიროა ქვითრის ატვირთვა. ქეში გადახდისას ადგილზე გადაიხდით — ქვითარი არ სჭირდება.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0"><span class="faq-q-t" data-i18n="faq.q3">შემიძლია ჯავშანი გავაუქმო ან გადავავადო?</span><span class="faq-plus">+</span></div><div class="faq-a" data-i18n="faq.a3">კი — გამოძახებამდე 2 საათით ადრე. დაგვიკავშირდით ტელეფონით ან WhatsApp-ით.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0"><span class="faq-q-t" data-i18n="faq.q4">ყველა ტიპის მანქანაზე მუშაობთ?</span><span class="faq-plus">+</span></div><div class="faq-a" data-i18n="faq.a4">დიახ — სედანი, SUV, ჰეჩბექი, უნივერსალი, მინივენი, პიკაპი, კუპე. დიდი ავტომობილების შემთხვევაში წინასწარ გაგვიკავშირდით.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="tFaq(this)" role="button" tabindex="0"><span class="faq-q-t" data-i18n="faq.q5">Detailing-ის ფოტო-ანგარიში რა მოიცავს?</span><span class="faq-plus">+</span></div><div class="faq-a" data-i18n="faq.a5">20+ ფოტო — კუზოვი, სალონი, დისკები, სარკეები — სანამ და შემდეგ. WhatsApp-ით გეგზავნებათ 30 წუთში.</div></div>
     </div>
   </div>
 </section>
@@ -878,39 +689,13 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
     <p class="sec-sub" data-i18n="sec.contactSub">ზარით, WhatsApp-ით ან სოციალური მედიით</p>
     <div class="contact-grid">
       <div class="cnt-left">
-        <a href="tel:+995555123456" class="cnt-card">
-          <div class="cnt-icon"><img src="phone.jpg" alt="phone" onerror="this.parentElement.innerHTML='<span class=cnt-icon-emoji>📞</span>'"></div>
-          <div>
-            <div class="cnt-lbl" data-i18n="cnt.phoneLabel">მთავარი ნომერი</div>
-            <div class="cnt-val">+995 555 12 34 56</div>
-            <div class="cnt-sub" data-i18n="cnt.phoneSub">ორშ–შაბ: 09:00–21:00</div>
-          </div>
-        </a>
-        <a href="https://wa.me/995599987654" class="cnt-card" target="_blank" rel="noopener">
-          <div class="cnt-icon"><img src="whatsapp.jpg" alt="whatsapp" onerror="this.parentElement.innerHTML='<span class=cnt-icon-emoji>💬</span>'"></div>
-          <div>
-            <div class="cnt-lbl" data-i18n="cnt.waLabel">WhatsApp / Viber</div>
-            <div class="cnt-val">+995 599 98 76 54</div>
-            <div class="cnt-sub" data-i18n="cnt.waSub">24/7 შეტყობინებები</div>
-          </div>
-        </a>
+        <a href="tel:+995555123456" class="cnt-card"><div class="cnt-icon"><img src="phone.jpg" alt="phone" onerror="this.parentElement.innerHTML='<span class=cnt-icon-emoji>📞</span>'"></div><div><div class="cnt-lbl" data-i18n="cnt.phoneLabel">მთავარი ნომერი</div><div class="cnt-val">+995 555 12 34 56</div><div class="cnt-sub" data-i18n="cnt.phoneSub">ორშ–შაბ: 09:00–21:00</div></div></a>
+        <a href="https://wa.me/995599987654" class="cnt-card" target="_blank" rel="noopener"><div class="cnt-icon"><img src="whatsapp.jpg" alt="whatsapp" onerror="this.parentElement.innerHTML='<span class=cnt-icon-emoji>💬</span>'"></div><div><div class="cnt-lbl" data-i18n="cnt.waLabel">WhatsApp / Viber</div><div class="cnt-val">+995 599 98 76 54</div><div class="cnt-sub" data-i18n="cnt.waSub">24/7 შეტყობინებები</div></div></a>
         <div class="social-row">
-          <a class="soc-btn" href="https://instagram.com/carwash.ge" target="_blank" rel="noopener">
-            <div class="soc-ico"><img src="insta.jpg" alt="Instagram" onerror="this.parentElement.innerHTML='<span class=soc-ico-emoji>📸</span>'"></div>
-            <div><div class="soc-name">Instagram</div><div class="soc-h">@carwash.ge</div></div>
-          </a>
-          <a class="soc-btn" href="https://facebook.com/carwash.ge" target="_blank" rel="noopener">
-            <div class="soc-ico"><img src="fb.jpg" alt="Facebook" onerror="this.parentElement.innerHTML='<span class=soc-ico-emoji>👥</span>'"></div>
-            <div><div class="soc-name">Facebook</div><div class="soc-h">CarWash Georgia</div></div>
-          </a>
-          <a class="soc-btn" href="https://tiktok.com/@carwash.ge" target="_blank" rel="noopener">
-            <div class="soc-ico"><img src="tiktok.jpg" alt="TikTok" onerror="this.parentElement.innerHTML='<span class=soc-ico-emoji>🎵</span>'"></div>
-            <div><div class="soc-name">TikTok</div><div class="soc-h">@carwash.ge</div></div>
-          </a>
-          <div class="soc-btn">
-            <div class="soc-ico" style="background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;border-radius:6px;"><span class="soc-ico-emoji">📍</span></div>
-            <div><div class="soc-name" data-i18n="cnt.addr">მისამართი</div><div class="soc-h" data-i18n="cnt.addrVal">ყაზბეგის გამზ. 12, ვაკე</div></div>
-          </div>
+          <a class="soc-btn" href="https://instagram.com/carwash.ge" target="_blank" rel="noopener"><div class="soc-ico"><img src="insta.jpg" alt="Instagram" onerror="this.parentElement.innerHTML='<span class=soc-ico-emoji>📸</span>'"></div><div><div class="soc-name">Instagram</div><div class="soc-h">@carwash.ge</div></div></a>
+          <a class="soc-btn" href="https://facebook.com/carwash.ge" target="_blank" rel="noopener"><div class="soc-ico"><img src="fb.jpg" alt="Facebook" onerror="this.parentElement.innerHTML='<span class=soc-ico-emoji>👥</span>'"></div><div><div class="soc-name">Facebook</div><div class="soc-h">CarWash Georgia</div></div></a>
+          <a class="soc-btn" href="https://tiktok.com/@carwash.ge" target="_blank" rel="noopener"><div class="soc-ico"><img src="tiktok.jpg" alt="TikTok" onerror="this.parentElement.innerHTML='<span class=soc-ico-emoji>🎵</span>'"></div><div><div class="soc-name">TikTok</div><div class="soc-h">@carwash.ge</div></div></a>
+          <div class="soc-btn"><div class="soc-ico" style="background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;border-radius:6px;"><span class="soc-ico-emoji">📍</span></div><div><div class="soc-name" data-i18n="cnt.addr">მისამართი</div><div class="soc-h" data-i18n="cnt.addrVal">ყაზბეგის გამზ. 12, ვაკე</div></div></div>
         </div>
         <div class="hours-box">
           <div class="hours-title" data-i18n="cnt.hours">სამუშაო საათები</div>
@@ -998,7 +783,7 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
         </div>
         <div class="bank-card bog">
           <div class="bank-l">
-            <div class="bank-logo" style="width:36px;height:36px;background:#E83127;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:11px;color:#fff;">BOG</div>
+            <div class="bank-logo"><img src="images.png" alt="BOG" onerror="this.parentElement.innerHTML='<div style=width:36px;height:36px;background:#E83127;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:Syne,sans-serif;font-weight:800;font-size:11px;color:#fff>BOG</div>'"></div>
             <div><div class="bank-nm">საქართველოს ბანკი</div><div class="bank-iban" onclick="copyIban('bog')">GE80 BG00 0000 0123 4567 89</div></div>
           </div>
           <button class="bank-btn" id="cp-bog" onclick="copyIban('bog')" data-i18n="pay.copy">კოპირება</button>
@@ -1095,13 +880,13 @@ footer .ft-bot{border-top-color:rgba(255,255,255,0.08);}
 const T = {
   ka: {
     "nav.services":"სერვისები","nav.reviews":"შეფასებები","nav.how":"პროცესი","nav.team":"გუნდი","nav.contact":"კონტაქტი","nav.book":"დაჯავშნა","nav.bookFull":"ვიზიტის დაჯავშნა →",
-    "hero.tag":"თბილისი · ვაკე","hero.h1a":"შენი მანქანა","hero.h1b":"იმსახურებს","hero.h1c":"საუკეთესოს","hero.sub":"პროფესიონალური სამრეცხაო სერვისი თბილისში. სწრაფი, ხარისხიანი, ონლაინ ჯავშანი.","hero.cta1":"ახლავე დაჯავშნა →","hero.cta2":"სერვისები","hero.stat1":"კმაყოფილი კლიენტი","hero.stat2":"Google შეფასება","hero.stat3":"წელი ბაზარზე","hero.open":"ახლა ღიაა","hero.closed":"დახურულია","hero.cert":"სერტიფიცირებული",
+    "hero.tag":"თბილისი · ვაკე","hero.h1a":"შენი მანქანა","hero.h1b":"იმსახურებს","hero.h1c":"საუკეთესოს","hero.sub":"პროფესიონალური სამრეცხაო სერვისი თბილისში. სწრაფი, ხარისხიანი, ონლაინ ჯავშანი.","hero.cta1":"ახლავე დაჯავშნა →","hero.cta2":"სერვისები","hero.open":"ახლა ღიაა","hero.closed":"დახურულია","hero.cert":"სერტიფიცირებული",
     "sec.services":"სერვისები","sec.servicesH2":"აირჩიეთ პაკეტი","sec.servicesSub":"სამი პაკეტი ყველა მოთხოვნისთვის. სწრაფი ჯავშანი, ზუსტი დრო.",
     "svc.expDesc":"სწრაფი გარეთა რეცხვა ყოველდღიური გამოყენებისთვის.","svc.exp1":"გარეთა სრული რეცხვა","svc.exp2":"მინების წმენდა","svc.exp3":"დისკების წმენდა","svc.exp4":"სარეინჯო სუნამო","svc.perVisit":"/ ვიზიტი","svc.min":"წთ","svc.hr":"სთ","svc.popular":"★ პოპულარული",
     "svc.premDesc":"სრული გარე და შიდა მომსახურება — ყოვლისმომცველი პაკეტი.","svc.prem1":"Express-ის ყველაფერი","svc.prem2":"შიდა მტვრის სრული მოხვაცება","svc.prem3":"სალონის სრული გამოფხეჭა","svc.prem4":"ხელის გამომშრალი პოლიშინგი","svc.prem5":"ტვირთის სექციის წმენდა",
     "svc.detDesc":"პროფესიონალური ავტოდეტეილინგი — ლუქის სრული აღდგენა.","svc.det1":"Premium-ის ყველაფერი","svc.det2":"ლაქის პოლიშინგი","svc.det3":"კერამიკული დაფარვა","svc.det4":"ტყავის კონდიციონირება","svc.det5":"ოზონური დამუშავება","svc.det6":"დეტალური ფოტო-ანგარიში",
     "svc.noteTitle":"🏅 რა არის \"Premium სეგმენტი\"?","svc.noteText":"Premium სეგმენტი ნიშნავს მაღალი ხარისხის, ყოვლისმომცველ სერვისს — გარე რეცხვიდან სრულ სალონის გამოფხეჭამდე.",
-    "sec.reviews":"შეფასებები","sec.reviewsH2":"კლიენტები გვენდობიან","rev.count":"150+ შეფასება","rev.reviews":"შეფასება",
+    "sec.reviews":"შეფასებები","sec.reviewsH2":"კლიენტები გვენდობიან",
     "rev.t1":"საოცარი შედეგი! BMW-ი ახლივით გამოიყურება. გუნდი პროფესიონალია, დრო ზუსტად დაიცვეს.","rev.d1":"2 კვირის წინ",
     "rev.t2":"Detailing სერვისი 10-დან 10! ძველი Lexus-ი ახლობელივით. ფოტო-ანგარიში ძალიან მოხერხებულია.","rev.d2":"1 თვის წინ",
     "rev.t3":"Express-ი 20 წუთში მართლა მზადაა! ყოველ კვირა ვსარგებლობ, ფასი-ხარისხი იდეალურია.","rev.d3":"3 კვირის წინ",
@@ -1133,13 +918,13 @@ const T = {
   },
   ru: {
     "nav.services":"Услуги","nav.reviews":"Отзывы","nav.how":"Процесс","nav.team":"Команда","nav.contact":"Контакты","nav.book":"Запись","nav.bookFull":"Записаться →",
-    "hero.tag":"Тбилиси · Ваке","hero.h1a":"Ваш автомобиль","hero.h1b":"заслуживает","hero.h1c":"лучшего","hero.sub":"Профессиональная автомойка в Тбилиси. Быстро, качественно, онлайн-запись.","hero.cta1":"Записаться →","hero.cta2":"Услуги","hero.stat1":"довольных клиентов","hero.stat2":"рейтинг Google","hero.stat3":"лет на рынке","hero.open":"Сейчас открыто","hero.closed":"Закрыто","hero.cert":"Сертифицировано",
+    "hero.tag":"Тбилиси · Ваке","hero.h1a":"Ваш автомобиль","hero.h1b":"заслуживает","hero.h1c":"лучшего","hero.sub":"Профессиональная автомойка в Тбилиси. Быстро, качественно, онлайн-запись.","hero.cta1":"Записаться →","hero.cta2":"Услуги","hero.open":"Сейчас открыто","hero.closed":"Закрыто","hero.cert":"Сертифицировано",
     "sec.services":"Услуги","sec.servicesH2":"Выберите пакет","sec.servicesSub":"Три пакета для любых нужд.",
     "svc.expDesc":"Быстрая наружная мойка.","svc.exp1":"Полная наружная мойка","svc.exp2":"Чистка стёкол","svc.exp3":"Чистка дисков","svc.exp4":"Ароматизатор","svc.perVisit":"/ визит","svc.min":"мин","svc.hr":"ч","svc.popular":"★ Популярное",
     "svc.premDesc":"Полное обслуживание внутри и снаружи.","svc.prem1":"Всё из Express","svc.prem2":"Пылесосная чистка","svc.prem3":"Химчистка салона","svc.prem4":"Ручная полировка","svc.prem5":"Чистка багажника",
     "svc.detDesc":"Профессиональный детейлинг.","svc.det1":"Всё из Premium","svc.det2":"Полировка лака","svc.det3":"Керамическое покрытие","svc.det4":"Кондиционирование кожи","svc.det5":"Озоновая обработка","svc.det6":"Фотоотчёт",
     "svc.noteTitle":"🏅 Что такое Premium?","svc.noteText":"Premium — комплексный сервис от мойки до химчистки.",
-    "sec.reviews":"Отзывы","sec.reviewsH2":"Клиенты доверяют нам","rev.count":"150+ отзывов","rev.reviews":"отзывов",
+    "sec.reviews":"Отзывы","sec.reviewsH2":"Клиенты доверяют нам",
     "rev.t1":"Удивительный результат! BMW как новый.","rev.d1":"2 недели назад",
     "rev.t2":"Детейлинг 10/10! Lexus как из салона.","rev.d2":"1 месяц назад",
     "rev.t3":"Express реально за 20 минут!","rev.d3":"3 недели назад",
@@ -1147,7 +932,7 @@ const T = {
     "how.visit":"🏢 Приехать на мойку","how.v1":"Выберите услугу и запишитесь","how.v2":"Приезжайте — команда ждёт","how.v3":"Получите чистый автомобиль",
     "how.driver":"🚗 Вызов водителя","how.d1":"Запишитесь, укажите адрес","how.d2":"Водитель заберёт автомобиль","how.d3":"Вернём чистым",
     "sec.team":"Команда","sec.teamH2":"Наши сотрудники","sec.teamSub":"Профессионалы о вашем авто",
-    "team.n1":"Гиорги Мамулашвили","team.r1":"🔧 Главный детейлер","team.d1":"8 лет опыта. Керамика и полировка.","team.e1":"8 лет",
+    "team.n1":"Гиорги Мамулашвили","team.r1":"🔧 Главный детейлер","team.d1":"8 лет опыта.","team.e1":"8 лет",
     "team.n2":"Нино Кварацхелия","team.r2":"✨ Спец. по салону","team.d2":"5 лет. Кожа и восстановление.","team.e2":"5 лет",
     "team.n3":"Давит Беридзе","team.r3":"💧 Express спец.","team.d3":"200+ клиентов/мес.","team.e3":"200+/мес",
     "team.n4":"Лаша Гелашвили","team.r4":"🏆 Спец. по лаку","team.d4":"6 лет на премиальных авто.","team.e4":"6 лет",
@@ -1171,14 +956,14 @@ const T = {
   },
   en: {
     "nav.services":"Services","nav.reviews":"Reviews","nav.how":"Process","nav.team":"Team","nav.contact":"Contact","nav.book":"Book Now","nav.bookFull":"Book a Visit →",
-    "hero.tag":"Tbilisi · Vake","hero.h1a":"Your car","hero.h1b":"deserves","hero.h1c":"the best","hero.sub":"Professional car wash in Tbilisi. Fast, quality-driven, online booking.","hero.cta1":"Book Now →","hero.cta2":"Services","hero.stat1":"happy clients","hero.stat2":"Google rating","hero.stat3":"years in business","hero.open":"Open Now","hero.closed":"Closed","hero.cert":"Certified",
+    "hero.tag":"Tbilisi · Vake","hero.h1a":"Your car","hero.h1b":"deserves","hero.h1c":"the best","hero.sub":"Professional car wash in Tbilisi. Fast, quality-driven, online booking.","hero.cta1":"Book Now →","hero.cta2":"Services","hero.open":"Open Now","hero.closed":"Closed","hero.cert":"Certified",
     "sec.services":"Services","sec.servicesH2":"Choose a Package","sec.servicesSub":"Three packages for every need.",
     "svc.expDesc":"Quick exterior wash for everyday use.","svc.exp1":"Full exterior wash","svc.exp2":"Window cleaning","svc.exp3":"Wheel cleaning","svc.exp4":"Air freshener","svc.perVisit":"/ visit","svc.min":"min","svc.hr":"hr","svc.popular":"★ Popular",
     "svc.premDesc":"Full interior and exterior service.","svc.prem1":"Everything in Express","svc.prem2":"Full interior vacuuming","svc.prem3":"Interior detailing","svc.prem4":"Hand-dry polishing","svc.prem5":"Trunk cleaning",
     "svc.detDesc":"Professional detailing — full paint restoration.","svc.det1":"Everything in Premium","svc.det2":"Paint polishing","svc.det3":"Ceramic coating","svc.det4":"Leather conditioning","svc.det5":"Ozone treatment","svc.det6":"Photo report",
     "svc.noteTitle":"🏅 What is Premium Segment?","svc.noteText":"Premium means high-quality comprehensive service from exterior wash to full interior detailing.",
-    "sec.reviews":"Reviews","sec.reviewsH2":"Clients Trust Us","rev.count":"150+ reviews","rev.reviews":"reviews",
-    "rev.t1":"Amazing result! BMW looks brand new. Professional team.","rev.d1":"2 weeks ago",
+    "sec.reviews":"Reviews","sec.reviewsH2":"Clients Trust Us",
+    "rev.t1":"Amazing result! BMW looks brand new.","rev.d1":"2 weeks ago",
     "rev.t2":"Detailing 10/10! Lexus looks showroom-fresh.","rev.d2":"1 month ago",
     "rev.t3":"Express really done in 20 minutes!","rev.d3":"3 weeks ago",
     "sec.how":"Process","sec.howH2":"How It Works","sec.howSub":"Visit us or request pickup — two ways, one quality.",
@@ -1204,7 +989,7 @@ const T = {
     "modal.svc":"Service","modal.name":"Name","modal.phone":"Phone","modal.date":"Date","modal.time":"Time","modal.pay":"Payment",
     "toast.copied":"Copied","toast.booked":"Booking sent!","toast.err":"Please try again",
     "val.name":"⚠️ Enter name","val.phone":"⚠️ Enter phone","val.car":"⚠️ Select car type","val.stype":"⚠️ Select service type","val.date":"⚠️ Select date","val.time":"⚠️ Select time",
-    "footer.desc":"Professional car wash in Tbilisi. Fast, quality, convenient.","footer.services":"Services","footer.driver":"Driver Pickup","footer.nav":"Navigation","footer.home":"Home","footer.reviews":"Reviews","footer.team":"Team","footer.book":"Book Now","footer.contact":"Contact","footer.hours":"Daily 09:00–21:00","footer.copy":"© 2024 CarWash Tbilisi. All rights reserved.",
+    "footer.desc":"Professional car wash in Tbilisi.","footer.services":"Services","footer.driver":"Driver Pickup","footer.nav":"Navigation","footer.home":"Home","footer.reviews":"Reviews","footer.team":"Team","footer.book":"Book Now","footer.contact":"Contact","footer.hours":"Daily 09:00–21:00","footer.copy":"© 2024 CarWash Tbilisi. All rights reserved.",
     "mobnav.home":"Home","mobnav.services":"Services","mobnav.book":"Book","mobnav.reviews":"Reviews","mobnav.contact":"Contact"
   }
 };
@@ -1313,13 +1098,13 @@ function showToast(msg,err){
 }
 
 function openModal(data){
-  document.getElementById('modal-detail').innerHTML=`
-    <div class="modal-row"><span class="modal-row-key">${t('modal.svc')}</span><span class="modal-row-val">${data.svc}</span></div>
-    <div class="modal-row"><span class="modal-row-key">${t('modal.name')}</span><span class="modal-row-val">${data.name}</span></div>
-    <div class="modal-row"><span class="modal-row-key">${t('modal.phone')}</span><span class="modal-row-val">${data.phone}</span></div>
-    <div class="modal-row"><span class="modal-row-key">${t('modal.date')}</span><span class="modal-row-val">${data.date}</span></div>
-    <div class="modal-row"><span class="modal-row-key">${t('modal.time')}</span><span class="modal-row-val">${data.time}</span></div>
-    <div class="modal-row"><span class="modal-row-key">${t('modal.pay')}</span><span class="modal-row-val">${data.pay}</span></div>`;
+  document.getElementById('modal-detail').innerHTML=
+    '<div class="modal-row"><span class="modal-row-key">'+t('modal.svc')+'</span><span class="modal-row-val">'+data.svc+'</span></div>'+
+    '<div class="modal-row"><span class="modal-row-key">'+t('modal.name')+'</span><span class="modal-row-val">'+data.name+'</span></div>'+
+    '<div class="modal-row"><span class="modal-row-key">'+t('modal.phone')+'</span><span class="modal-row-val">'+data.phone+'</span></div>'+
+    '<div class="modal-row"><span class="modal-row-key">'+t('modal.date')+'</span><span class="modal-row-val">'+data.date+'</span></div>'+
+    '<div class="modal-row"><span class="modal-row-key">'+t('modal.time')+'</span><span class="modal-row-val">'+data.time+'</span></div>'+
+    '<div class="modal-row"><span class="modal-row-key">'+t('modal.pay')+'</span><span class="modal-row-val">'+data.pay+'</span></div>';
   document.getElementById('modal-backdrop').classList.add('open');
   document.body.style.overflow='hidden';
 }
